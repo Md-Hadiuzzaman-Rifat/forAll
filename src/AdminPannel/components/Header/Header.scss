@@ -1,0 +1,15 @@
+.dashboardHeader{
+    background-color: rgba(192, 192, 190, 0.726);
+    margin: 0 5px;
+    border-radius: 5px;
+    .container{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-weight: bolder;
+        font-size: 1.25rem;
+        p{
+            margin: 10px;
+        }
+    }
+}

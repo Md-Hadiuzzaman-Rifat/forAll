@@ -1,0 +1,11 @@
+.badges{
+    color: white;
+    font-weight: 700;
+    margin-top: 500px;
+    .pending{
+        background-color: blue;
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 20px;
+    }
+}

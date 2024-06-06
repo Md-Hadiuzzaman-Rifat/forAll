@@ -1,0 +1,50 @@
+@import "../../css-config/mixins.scss";
+$primary-color: #2ecc71;
+$secondary-color: #34495e;
+$font-family: 'Open Sans', sans-serif;
+
+.OrderSuccess{
+    display: flex;
+    height: 75vh;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    @include md{
+        margin-top: 50px;
+    }
+    .container {
+        max-width: 500px;
+        text-align: center;
+        i {
+            font-size: 100px;
+            color: $primary-color;
+            margin-bottom: 30px;
+        }
+    
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: $secondary-color;
+        }
+    
+        p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+    
+        .button {
+            display: inline-block;
+            background-color: $primary-color;
+            color: #fff;
+            padding: 10px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+    
+            &:hover {
+                background-color: darken($primary-color, 10%);
+            }
+        }
+    }
+}
