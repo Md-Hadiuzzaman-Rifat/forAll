@@ -8,6 +8,7 @@ import { useGetCategoryQuery } from "../../../features/category/categoryApi";
 import {useGetSubCategoryQuery} from "../../../features/subCategory/subCategoryApi"
 import axios from "axios";
 import TextArea from "../../components/TextArea/TextArea";
+import { Link } from "react-router-dom";
 
 export default function ProductUploadForm() {
   // get Category 
@@ -28,18 +29,18 @@ export default function ProductUploadForm() {
   const [price, setPrice] = useState("");
   const [videoLink, setVideoLink] = useState("");
   const [otherLink, setOtherLink] = useState("");
-  const [category, setCategory] = useState( getCatData?.[0]?.category || "Add Category");
+  const [category, setCategory] = useState( getCatData?.[0]?.category);
   const [subcategory, setSubcategory] = useState([]);
   const [description, setDescription] = useState("");
   const [variants, setVariants] = useState("");
   const [discount, setDiscount] = useState("");
-  const [extra, setExtra] = useState(null);
+  const [extra, setExtra] = useState("");
   const [extraInfo, setExtraInfo] = useState("");
   const [brand, setBrand] = useState("");
   const [shortDescription, setShortDescription] = useState("");
   const [files, setFile] = useState([]);
   const [message, setMessage] = useState();
-  const [error, setError]= useState(true)
+  const [error, setError]= useState(false)
   const [stock, setStock]= useState(true)
 
   const dispatch = useDispatch();
@@ -61,6 +62,9 @@ export default function ProductUploadForm() {
   const removeImage = (i) => {
     setFile(files.filter((x) => x.name !== i));
   };
+  {
+    console.log("produtUpllad");
+  }
 
   const handleUpload = async (e) => {
     e.preventDefault();
@@ -73,6 +77,25 @@ export default function ProductUploadForm() {
 
     addProduct(formData)
   };
+
+  const rest=()=>{
+    setProductName("")
+    setBrand("")
+    setReview(5)
+    setCategory(getCatData?.[0]?.category)
+    setSubcategory([])
+    setDescription("")
+    setPrice("")
+    setVideoLink("")
+    setOtherLink("")
+    setStock(true)
+    setError(true)
+    setFile([])
+    setShortDescription([])
+    setExtra("")
+    setExtraInfo("")
+    setDiscount("")
+  }
 
   const details = {
     productName,
@@ -95,6 +118,7 @@ export default function ProductUploadForm() {
   useEffect(() => {
     if (addSuccess) {
       dispatch(modalOpen());
+      rest()
     }
   }, [addSuccess, dispatch]);
 
@@ -127,6 +151,8 @@ export default function ProductUploadForm() {
               </label>
               <div className="mt-2">
                 <input
+                required
+                value={productName}
                   onChange={(e) => setProductName(e.target.value)}
                   type="text"
                   name="product-name"
@@ -146,6 +172,7 @@ export default function ProductUploadForm() {
               </label>
               <div className="mt-2">
                 <input
+                value={review}
                   min="1"
                   max="5"
                   onChange={(e) => setReview(e.target.value)}
@@ -167,6 +194,8 @@ export default function ProductUploadForm() {
               </label>
               <div className="mt-2">
                 <input
+                required
+                value={price}
                   onChange={(e) => setPrice(e.target.value)}
                   type="text"
                   name="price"
@@ -186,8 +215,10 @@ export default function ProductUploadForm() {
               </label>
               <div className="mt-2">
                 <input
+                required
                   onChange={(e) => setDiscount(e.target.value)}
                   type="text"
+                  value={discount}
                   name="discount"
                   id="discount"
                   autoComplete="family-name"
@@ -224,6 +255,7 @@ export default function ProductUploadForm() {
                   id="category"
                   name="category"
                   autoComplete="category"
+                  value={category}
                   onChange={(e) => setCategory(e.target.value)}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
@@ -331,6 +363,7 @@ export default function ProductUploadForm() {
                 <input
                   onChange={(e) => setVideoLink(e.target.value)}
                   type="text"
+                  value={videoLink}
                   name="video"
                   id="video"
                   className="block px-4 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -349,6 +382,7 @@ export default function ProductUploadForm() {
                 <input
                   onChange={(e) => setOtherLink(e.target.value)}
                   type="text"
+                  value={otherLink}
                   name="otherLink"
                   id="otherLink"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -429,6 +463,7 @@ export default function ProductUploadForm() {
             onChange={(e) => setExtraInfo(e.target.value)}
             placeholder="Extra information like Color or Size"
             type="text"
+            value={extraInfo}
             name="otherLink"
             id="otherLink"
             className="block px-4 mb-4 w-[300px] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -439,6 +474,7 @@ export default function ProductUploadForm() {
             placeholder="S, M, L, XL, XXL"
             type="text"
             name="otherLink"
+            value={extra}
             id="otherLink"
             className="block px-4 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           />

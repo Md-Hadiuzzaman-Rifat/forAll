@@ -4,7 +4,7 @@ import Blogs from "../../components/Blogs/Blogs.jsx";
 import Popup from "../../components/Popup/Popup.jsx";
 import Hero from "../../components/Hero/Hero.jsx";
 import CategoryItem from "../../components/CategoryItem/CategoryItem.jsx";
-import CategoryItem2 from "../../components/CategoryItem/CategoryItem2.jsx";
+// import CategoryItem2 from "../../components/CategoryItem/CategoryItem2.jsx";
 import Services from "../../components/Services/Services.jsx";
 import Banner from "../../components/Banner/Banner.jsx";
 import Partners from "../../components/Partners/Partners.jsx";
@@ -66,16 +66,16 @@ const bars = [
 ];
 const Home = () => {
   const { data, isSuccess, isLoading } = useGetProductsQuery();
-  console.log(import.meta.env.VITE_ROOT_API);
+  // console.log(import.meta.env.VITE_ROOT_API);
   return (
     <div>
       <RightCart></RightCart>
       <Hero />
+      
       <Notice></Notice>
-      <Bars item={bars[0]}></Bars>
+      {/* <Bars item={bars[0]}></Bars>  */}
       <NewCategory></NewCategory>
       <CategoryItem />
-      <CategoryItem2 />
       <Services />
       <Bars item={bars[1]} id="top rated"></Bars>
        {/* top rated  */}
