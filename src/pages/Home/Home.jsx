@@ -64,11 +64,14 @@ const bars = [
     textStyle: "mb-[-14px] mt-[4px]",
   },
 ];
+
 const Home = () => {
+
   const { data, isSuccess, isLoading } = useGetProductsQuery();
-  // console.log(import.meta.env.VITE_ROOT_API);
+
   return (
     <div>
+      
       <RightCart></RightCart>
       <Hero />
       

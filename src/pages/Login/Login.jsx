@@ -80,6 +80,10 @@ const handleGoogle=()=>{
                     />
                   </div>
 
+                  <button className="w-full text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" disabled={loading} type="submit">
+              Login
+            </button>
+
                   <div className="flex flex-col gap-2">
                   {/* <button type="submit" className="dark:bg-white dark:text-black text-white bg-gray-500 px-6 py-2 font-semibold rounded-sm text-white">Submit</button> */}
                   <button onClick={handleGoogle} className="bg-orange-500 px-6 py-2 font-semibold rounded-sm text-white">Google++</button>

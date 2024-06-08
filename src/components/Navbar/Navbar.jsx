@@ -365,9 +365,9 @@ export default function Navbar() {
                 <div className="ml-auto flex items-center">
                   {/* Contact */}
                   <div className="flex lg:ml-6 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
-                    <a href="tel:+8801648141727" className="flex items-center gap-2">
+                    <a href={`tel:{+88${import.meta.env.VITE_PHONE}}`} className="flex items-center gap-2">
                     
-                    <PiPhoneCallLight className=" mb-1  text-gray-400 "/> <span className="text-gray-400 font-abc">+88 01648141727</span>
+                    <PiPhoneCallLight className=" mb-1  text-gray-400 "/> <span className="text-gray-400 font-abc">+88 {import.meta.env.VITE_PHONE}</span>
                     </a>
                   </div>
 

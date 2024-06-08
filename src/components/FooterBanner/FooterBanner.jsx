@@ -50,7 +50,7 @@ export default function FooterBanner() {
               </div>
               <dt className="mt-4 font-semibold text-white">Contact Us</dt>
               <dd className="mt-2 leading-7 text-gray-400">
-                আমাদের সাথে বিসনেস বা যে কোনো প্রয়োজনে সরাসরি যোগাযোগ করুন <span className='font-bold text-white'>+8801648141727</span> এই নম্বরে
+                আমাদের সাথে বিসনেস বা যে কোনো প্রয়োজনে সরাসরি যোগাযোগ করুন <span className='font-bold text-white'>{import.meta.env.VITE_PHONE}</span> এই নম্বরে
               </dd>
             </div>
           </dl>
