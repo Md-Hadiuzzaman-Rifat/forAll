@@ -37,6 +37,7 @@ const DetailsContent = ({ desc, img }) => {
     review,
     stock,
     otherLink,
+    sizeChart
   } = desc || {};
 
   const sizes = makeSizes(extra);
@@ -52,7 +53,7 @@ const DetailsContent = ({ desc, img }) => {
   const dispatch = useDispatch();
 
   const addCount = () => {
-    if (!selectSize) {
+    if (sizes && !selectSize) {
       setWarning(true);
     } else {
       setCount((prev) => prev + 1);
@@ -90,7 +91,7 @@ const DetailsContent = ({ desc, img }) => {
   };
 
   const handlePurchase = () => {
-    if (selectSize === null || count === 0) {
+    if ( count === 0) {
       setWarning(true);
     } else {
       setWarning(false);
@@ -102,7 +103,7 @@ const DetailsContent = ({ desc, img }) => {
   const { isOpen } = useSelector((state) => state.size);
 
   function openModal() {
-    dispatch(sizeModalOpen(otherLink));
+    dispatch(sizeModalOpen(sizeChart));
   }
 
   return (
@@ -136,20 +137,22 @@ const DetailsContent = ({ desc, img }) => {
             Tk: {discount}
           </span>
         </div>
-
-        <button
+          
+        {
+          sizeChart && <button
           onClick={openModal}
           className="flex underline gap-2 hover:text-gray-600 items-center me-12  text-indigo-700 "
         >
           {" "}
           <PiToiletPaperLight className="text-2xl " /> Size Guide
         </button>
+        }
       </div>
 
       <p className="font-abc font-semibold mt-4">{extraInfo?.toUpperCase()}</p>
       {/* sizes start */}
       <div className="flex flex-row gap-2 mt-2 flex-wrap">
-        {sizes.map((item, index) => (
+        {sizes && sizes?.map((item, index) => (
           <div
             key={index}
             className={`${
@@ -168,7 +171,7 @@ const DetailsContent = ({ desc, img }) => {
       {/* // warning  */}
       <div style={warning ? { display: "block" } : { display: "none" }}>
         <p className="bg-red-200 border font-semibold text-red-700 border-red-700 rounded-sm p-2 text-xl text-center mt-2 duration-100 font-abc">
-          Please Select Size And Quantity
+          Please Select Quantity
         </p>
       </div>
       {/* // stock check  */}
@@ -232,35 +235,6 @@ const DetailsContent = ({ desc, img }) => {
         className=" leading-6 text-gray-600 mt-7 dark:text-gray-400 font-normal text-sm font-mont"
         dangerouslySetInnerHTML={{ __html: shortDescription }}
       ></div>
-      {/* // will work afterward  */}
-
-      {/* <div className=" flex flex-row justify-between items-center mt-4">
-        <p className="font-medium text-base leading-4 text-gray-600">
-          Dimensions
-        </p>
-        <svg
-          onClick={() => setRotate(!rotate)}
-          id="rotateSVG"
-          className={
-            "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer transform " +
-            (rotate ? "rotate-180" : "rotate-0")
-          }
-          width="10"
-          height="6"
-          viewBox="0 0 10 6"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M9 1L5 5L1 1"
-            stroke="#4B5563"
-            strokeWidth="1.25"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </div> */}
-      {/* // will work afterward  */}
       <hr className=" bg-gray-200 w-full mt-4" />
     </div>
   );

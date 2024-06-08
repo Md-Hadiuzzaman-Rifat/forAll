@@ -8,7 +8,6 @@ import { addToCart, clearCart, decreaseCart, getTotals, removeFromCart } from ".
 const SingleCartItem = ({product}) => {
 
   const {cartQuantity, image, name, price, id} = product || {}
-  console.log(image);
   const cart = useSelector((state) => state.cart);
   const dispatch= useDispatch()
   const [count, setCount] = useState(cartQuantity);
@@ -39,7 +38,6 @@ const SingleCartItem = ({product}) => {
   };
 
   const handleRemoveFromCart = (product) => {
-    console.log(product);
     dispatch(removeFromCart(product));
   };
 
@@ -95,18 +93,21 @@ const SingleCartItem = ({product}) => {
               </span>
             </div>
           </div>
-
+          
           {/* size section  */}
-          <div className="flex items-center max-[500px]:justify-center md:justify-end max-md:mt-3 h-full">
+          { subString !== "null" &&
+            (<div className="flex items-center max-[500px]:justify-center md:justify-end max-md:mt-3 h-full">
             <div className="transition border cursor-pointer font-bold bg-gray-800 text-gray-100 px-4 py-1 duration-100">
               {subString?.toUpperCase()}
             </div>
-          </div>
+          </div>)
+          }
+          
           
           {/* / */}
           <div className="flex items-center max-[500px]:justify-center md:justify-end max-md:mt-3 h-full">
             <p className="text-lg leading-8 text-gray-600 text-center dark:text-gray-300">
-              {/* {cart.cartTotalQuantity*price} Taka */}
+              {/* {cart.cartTotalQuantity*price} Taka */} {""}
             </p>
           </div>
         </div>

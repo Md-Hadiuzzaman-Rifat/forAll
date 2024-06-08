@@ -9,6 +9,7 @@ import {useGetSubCategoryQuery} from "../../../features/subCategory/subCategoryA
 import axios from "axios";
 import TextArea from "../../components/TextArea/TextArea";
 import { Link } from "react-router-dom";
+import { useGetSizeChartQuery } from "../../../features/SizeChart/SizeChartSlice";
 
 export default function ProductUploadForm() {
   // get Category 
@@ -17,11 +18,13 @@ export default function ProductUploadForm() {
   // get Subcategory 
   const {data: getSubCatData, isSuccess:getSubCatSuccess, isLoading: subCatLoading}= useGetSubCategoryQuery()
 
+
+  // getSizeChart 
+  const {data:getSizeChart, isSuccess:getSizeChartSuccess, isLoading:getSizeChartLoading}= useGetSizeChartQuery()
+
   // Add Product
   const [addProduct, { data, isError, isLoading, isSuccess:addSuccess }] =
     useAddProductMutation();
-
-  const selector = useSelector((state) => state.cartHandler);
   
  
   const [productName, setProductName] = useState("");
@@ -34,7 +37,7 @@ export default function ProductUploadForm() {
   const [description, setDescription] = useState("");
   const [variants, setVariants] = useState("");
   const [discount, setDiscount] = useState("");
-  const [extra, setExtra] = useState("");
+  const [extra, setExtra] = useState(null);
   const [extraInfo, setExtraInfo] = useState("");
   const [brand, setBrand] = useState("");
   const [shortDescription, setShortDescription] = useState("");
@@ -42,8 +45,10 @@ export default function ProductUploadForm() {
   const [message, setMessage] = useState();
   const [error, setError]= useState(false)
   const [stock, setStock]= useState(true)
+  const [sizeChart, setSizeChart]=useState(null)
 
   const dispatch = useDispatch();
+
 
   const handleFile = (e) => {
     setMessage("");
@@ -62,9 +67,7 @@ export default function ProductUploadForm() {
   const removeImage = (i) => {
     setFile(files.filter((x) => x.name !== i));
   };
-  {
-    console.log("produtUpllad");
-  }
+
 
   const handleUpload = async (e) => {
     e.preventDefault();
@@ -112,7 +115,8 @@ export default function ProductUploadForm() {
     extra,
     extraInfo,
     shortDescription,
-    stock
+    stock,
+    sizeChart
   };
 
   useEffect(() => {
@@ -135,6 +139,9 @@ export default function ProductUploadForm() {
     } else {
        setSubcategory(subcategory.filter((item) => item !== e.target.value));
     }
+ }
+  const  handleSizeChart=(e)=> {
+   setSizeChart(e.target.value)
  }
 
   return (
@@ -389,6 +396,8 @@ export default function ProductUploadForm() {
                 />
               </div>
             </div>
+
+            
           </div>
         </div>
 
@@ -457,6 +466,41 @@ export default function ProductUploadForm() {
         {/* image upload end   */}
 
         <p>Extra Information</p>
+
+
+        {/* for size chart start */}
+               
+                <div className="sm:col-span-3 text-base">
+              <label
+                htmlFor="sizeChart"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Size Chart
+              </label>
+              {/* // subcategory data  */}
+              {
+                getSizeChartLoading && "Sorry For Loading"
+              }
+              {
+                !getSizeChartLoading && getSizeChartSuccess && getSizeChart?.length >  0 && (
+                  <div>
+                    {
+                      getSizeChart.map(item=><div key={item._id} >
+                        <input type="radio" className="font-thin p-2 rounded-full" 
+                        checked={sizeChart === item?.image}
+                        onChange = {handleSizeChart} value={item?.image}/> 
+                        
+                        <span className="p-2">{item?.sizeChart?.toUpperCase()}</span> 
+                        
+                        <img className="w-16 inline ml-4" src={`${import.meta.env.VITE_ROOT_API}/Images/${item?.image}`} alt="" />
+                      </div> )
+                    }
+                  </div>
+                )
+              }
+            </div>
+        {/* for size chart end */}
+
         <div>
           <label htmlFor="Available Size or Color">Color or Size</label>
           <input
@@ -464,8 +508,8 @@ export default function ProductUploadForm() {
             placeholder="Extra information like Color or Size"
             type="text"
             value={extraInfo}
-            name="otherLink"
-            id="otherLink"
+            name="color or size"
+            id="color or size"
             className="block px-4 mb-4 w-[300px] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           />
           <label htmlFor="Color or Size Properties">Color or Size Properties</label>
@@ -473,9 +517,9 @@ export default function ProductUploadForm() {
             onChange={(e) => setExtra(e.target.value)}
             placeholder="S, M, L, XL, XXL"
             type="text"
-            name="otherLink"
+            name="color or size"
             value={extra}
-            id="otherLink"
+            id="color or size"
             className="block px-4 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           />
         </div>

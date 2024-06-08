@@ -6,7 +6,7 @@ import { useGetCategoryQuery } from "../../features/category/categoryApi";
 
 const CategoryItem = () => {
   const { data, isLoading, isSuccess } = useGetCategoryQuery();
-  console.log(data);
+  
   return (
     <div className="py-8">
       <div className="container">
@@ -17,13 +17,17 @@ const CategoryItem = () => {
             {data?.map((item) => (
               <div key={item?._id}>
                 <div className="relative">
+                  <Link to={`category/${item?.category}`}>
                   <img
                     src={`${import.meta.env.VITE_ROOT_API}/Images/${
                       item?.image
                     }`}
                     alt=""
                   />
+                  </Link>
+                  <Link to={`category/${item?.category}`}>
                   <button className="absolute border bottom-4 left-4 bg-black bg-opacity-40 text-brandGreen border-green-400 rounded-3xl px-6 py-2 cursor-pointer">Browse</button>
+                  </Link>
                 </div>
               </div>
             ))}

@@ -37,6 +37,7 @@ import Payment2 from "./components/Payment2/Payment2";
 import Category from "./category/Category";
 import SizeModal from "./components/SizeModal/SizeModal";
 import Overview from "./AdminPannel/Overview/Overview";
+import SizeChart from "./AdminPannel/components/SizeChart/SizeChart";
 // import Category from "./category/Category";
 
 const App = () => {
@@ -64,6 +65,7 @@ const App = () => {
             <Route path="/test" element={<QuickView />}></Route>
             <Route path="/image" element={<ImageUpload />}></Route>
             <Route path="/home" element={<Home></Home>}></Route>
+            <Route path='/sizeChart' element={<SizeChart/>}></Route>
             {/* <Route
               path="/category/:category"
               element={<CategoryPage></CategoryPage>}

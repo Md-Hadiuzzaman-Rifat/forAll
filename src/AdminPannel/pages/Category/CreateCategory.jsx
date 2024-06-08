@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { useAddSubCategoryMutation, useGetSubCategoryQuery } from "../../../features/subCategory/subCategoryApi";
 import SubCategory from "../../components/SubCategoryItem/SubCategoryItem";
 import CategoryForm from "../../../components/CategoryForm/CategoryForm";
-import Modal from "../../../components/Modal/Modal"
 import AdminLayout from "../../AdminLayout/AdminLayout";
+import SizeChart from "../../components/SizeChart/SizeChart"
 
 const CreateCategory = () => {
   const [addNewCategory, setAddNewCategory] = useState("");
@@ -38,6 +38,7 @@ const CreateCategory = () => {
       </h1>
     
       <CategoryForm></CategoryForm>
+      <SizeChart></SizeChart>
 
       <form onSubmit={handleSubCategory} className="flex gap-2 ">
         <div>

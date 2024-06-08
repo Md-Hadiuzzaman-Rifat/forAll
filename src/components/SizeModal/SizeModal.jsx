@@ -8,14 +8,13 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 
 export default function SizeModal() {
   // let [isOpen, setIsOpen] = useState(true)
-  const {isOpen, value} = useSelector(state=>state.size)
+  const {isOpen, value} = useSelector(state=>state.size) || {}
 
   const dispatch= useDispatch()
 
   function closeModal() {
     dispatch(sizeModalClose())
   }
-
 
 
   return (
@@ -46,16 +45,10 @@ export default function SizeModal() {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all relative">
-                  <img src={value} alt="size" />
+                  <img src={`${import.meta.env.VITE_ROOT_API}/Images/${value}`} alt="size" />
 
                   <div className="mt-4">
-                    {/* <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      Got it, thanks!
-                    </button> */}
+                    
                     <AiOutlineCloseCircle onClick={closeModal} className='absolute top-[2rem] cursor-pointer right-[2rem] text-4xl text-red-500'/> 
 
                   </div>

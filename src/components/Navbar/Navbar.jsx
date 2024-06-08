@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import {
@@ -9,6 +10,8 @@ import { Link } from "react-router-dom";
 import "./Navbar.scss"
 import { PiPhoneCallLight } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
+import { useGetCategoryQuery } from "../../features/category/categoryApi";
+
 
 const navigation = {
   categories: [
@@ -80,6 +83,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const navigate= useNavigate()
 
+  const {data, isLoading}= useGetCategoryQuery()
+
   const [stickyClass, setStickyClass] = useState('relative');
 
   useEffect(() => {
@@ -145,43 +150,33 @@ export default function Navbar() {
                     </button>
                   </div>
 
-                  {/* Links */}
+
+                  {
+                    isLoading && "sorry for loading..."
+                  }
+                  
+                  
                   <Tab.Group as="div" className="mt-2">
-                    <div className="border-b border-gray-200 opacity-0">
-                      <Tab.List className="-mb-px flex space-x-8 px-4">
-                        {navigation.categories.map((category) => (
-                          <Tab
-                            key={category.name}
-                            className={({ selected }) =>
-                              classNames(
-                                selected
-                                  ? "border-indigo-600 text-indigo-600"
-                                  : "border-transparent text-gray-900",
-                                "flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium"
-                              )
-                            }
-                          >
-                            {category.name}
-                          </Tab>
-                        ))}
-                      </Tab.List>
-                    </div>
+                    
                     <Tab.Panels as={Fragment}>
-                      {navigation.categories.map((category) => (
+                      
                         <Tab.Panel
-                          key={category.name}
                           className="space-y-10 px-4 pb-8 pt-10"
                         >
+
+                          {/* // for image start  */}
                           <div className="grid grid-cols-2 gap-x-4">
-                            {category.featured.map((item) => (
-                              <div
-                                key={item.name}
+                            {data?.map((item) => (
+                              
+                              <div 
+                                key={item._id}
                                 className="group relative text-sm"
                               >
+                                
                                 <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                                   <img
-                                    src={item.imageSrc}
-                                    alt={item.imageAlt}
+                                    src={`${import.meta.env.VITE_ROOT_API}/Images/${item?.image}`}
+                                    
                                     className="object-cover object-center"
                                   />
                                 </div>
@@ -201,36 +196,29 @@ export default function Navbar() {
                               </div>
                             ))}
                           </div>
-                          {category.sections.map((section) => (
-                            <div key={section.name}>
-                              <p
-                                id={`${category.id}-${section.id}-heading-mobile`}
-                                className="font-medium text-gray-900"
-                              >
-                                {section.name}
-                              </p>
-                              <ul
-                                role="list"
-                                aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
-                                className="mt-6 flex flex-col space-y-6"
-                              >
-                                {section.items.map((item) => (
-                                  <li key={item.name} className="flow-root">
-                                    <a
-                                      href={item.href}
-                                      className="-m-2 block p-2 text-gray-500"
-                                    >
-                                      {item.name}
-                                    </a>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
+
+
+                          {
+                            data?.map((item) => (
+                              <li key={item._id} className="flow-root">
+                                <a
+                                  href={item.href}
+                                  className="-m-2 block p-2 text-gray-500"
+                                >
+                                
+                                  {item?.category}
+                                </a>
+                              </li>
+                            ))
+                          }
                         </Tab.Panel>
-                      ))}
+                      
                     </Tab.Panels>
-                  </Tab.Group>
+                    
+                  </Tab.Group> 
+                  {/* // work end now  */}
+
+
 
 
                 </Dialog.Panel>
@@ -314,9 +302,9 @@ export default function Navbar() {
                                   <div className="mx-auto max-w-7xl px-8">
                                     <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
                                       <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                                        {category.featured.map((item) => (
+                                        {data?.map((item) => (
                                           <div
-                                            key={item.name}
+                                            key={item._id}
                                             className="group relative text-base sm:text-sm"
                                           >
                                             <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
@@ -346,34 +334,19 @@ export default function Navbar() {
                                         ))}
                                       </div>
                                       <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                                        {category.sections.map((section) => (
-                                          <div key={section.name}>
-                                            <p
-                                              id={`${section.name}-heading`}
-                                              className="font-medium text-gray-900"
-                                            >
-                                              {section.name}
-                                            </p>
-                                            <ul
-                                              role="list"
-                                              aria-labelledby={`${section.name}-heading`}
-                                              className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                                            >
-                                              {section.items.map((item) => (
+
+                                        {data?.map((item) => (
                                                 <li
-                                                  key={item.name}
+                                                  key={item?.category}
                                                   className="flex"
                                                 >
                                                   <a
                                                     href={item.href}
                                                     className="hover:text-gray-800"
                                                   >
-                                                    {item.name}
+                                                    {item.category}
                                                   </a>
                                                 </li>
-                                              ))}
-                                            </ul>
-                                          </div>
                                         ))}
                                       </div>
                                     </div>

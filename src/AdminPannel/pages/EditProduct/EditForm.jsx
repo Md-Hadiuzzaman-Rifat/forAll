@@ -10,6 +10,7 @@ import TextArea from "../../components/TextArea/TextArea";
 import { useGetSubCategoryQuery } from "../../../features/subCategory/subCategoryApi";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEditProductMutation } from "../../../features/product/productApi";
+import { useGetSizeChartQuery } from "../../../features/SizeChart/SizeChartSlice";
 
 export default function EditForm({ data }) {
 
@@ -26,6 +27,9 @@ export default function EditForm({ data }) {
     isLoading: subCatLoading,
   } = useGetSubCategoryQuery();
 
+    // getSizeChart 
+    const {data:getSizeChart, isSuccess:getSizeChartSuccess, isLoading:getSizeChartLoading}= useGetSizeChartQuery()
+
   const {
     brand: eBrand,
     category: eCategory,
@@ -41,7 +45,8 @@ export default function EditForm({ data }) {
     variants: eVariants,
     videoLink: eVideoLink,
     shortDescription: eShortDescription,
-    stock:eStock
+    stock:eStock,
+    sizeChart: eSizeChart
   } = data?.description || {};
 
 
@@ -51,6 +56,7 @@ export default function EditForm({ data }) {
   const [videoLink, setVideoLink] = useState(eVideoLink);
   const [otherLink, setOtherLink] = useState(eOtherLink);
   const [category, setCategory] = useState(eCategory);
+  const [sizeChart, setSizeChart]=useState(eSizeChart)
   const [subcategory, setSubcategory] = useState(eSubcategory || []);
   const [shortDescription, setShortDescription] = useState(eShortDescription);
   const [description, setDescription] = useState(eDescription);
@@ -80,7 +86,8 @@ export default function EditForm({ data }) {
     discount,
     extra,
     extraInfo,
-    stock
+    stock,
+    sizeChart
   };
 
   const handleChange = (e) => {
@@ -91,6 +98,10 @@ export default function EditForm({ data }) {
       setSubcategory(subcategory.filter((item) => item !== e.target.value));
     }
   };
+
+  const  handleSizeChart=(e)=> {
+    setSizeChart(e.target.value)
+  }
 
   const [editProduct, {isSuccess}]=useEditProductMutation()
 
@@ -382,6 +393,38 @@ export default function EditForm({ data }) {
               </div>
             </div>
           </div>
+               {/* for size chart start */}
+               
+               <div className="sm:col-span-3 text-base">
+              <label
+                htmlFor="sizeChart"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Size Chart
+              </label>
+              {/* // subcategory data  */}
+              {
+                getSizeChartLoading && "Sorry For Loading"
+              }
+              {
+                !getSizeChartLoading && getSizeChartSuccess && getSizeChart?.length >  0 && (
+                  <div>
+                    {
+                      getSizeChart.map(item=><div key={item._id} >
+                        <input type="radio" className="font-thin p-2 rounded-full" 
+                        checked={sizeChart === item?.image}
+                        onChange = {handleSizeChart} value={item?.image}/> 
+                        
+                        <span className="p-2">{item?.sizeChart?.toUpperCase()}</span> 
+                        
+                        <img className="w-16 inline ml-4" src={`${import.meta.env.VITE_ROOT_API}/Images/${item?.image}`} alt="" />
+                      </div> )
+                    }
+                  </div>
+                )
+              }
+            </div>
+        {/* for size chart end */}
 
           <div>
             <label htmlFor="Available Size or Color">Color or Size</label>

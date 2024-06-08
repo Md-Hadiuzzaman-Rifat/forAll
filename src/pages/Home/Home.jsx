@@ -14,7 +14,7 @@ import SampleProduct from "../../components/SampleProduct/SampleProduct.jsx";
 // import AppStore from "../../components/AppStore/AppStore.jsx";
 import FooterBanner from "../../components/FooterBanner/FooterBanner.jsx";
 import ShoppingCartForm from "../../components/ShoppingCartForm/ShoppingCartForm.jsx";
-import NewCategory from "../../components/NewCategory/NewCategory.jsx";
+// import NewCategory from "../../components/NewCategory/NewCategory.jsx";
 import Bars from "../../components/Bars/Bars.jsx";
 import RightCart from "../../components/RightCart/RightCart.jsx";
 import Notice from "../../components/Notice/Notice.jsx";
@@ -73,8 +73,8 @@ const Home = () => {
       <Hero />
       
       <Notice></Notice>
-      {/* <Bars item={bars[0]}></Bars>  */}
-      <NewCategory></NewCategory>
+      <Bars item={bars[0]}></Bars> 
+      {/* <NewCategory></NewCategory> */}
       <CategoryItem />
       <Services />
       <Bars item={bars[1]} id="top rated"></Bars>
