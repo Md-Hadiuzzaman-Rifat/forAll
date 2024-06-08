@@ -31,13 +31,14 @@ import ProductTable from "./AdminPannel/components/ProductTable/ProductTable";
 import GarbageCollection from "./pages/GarbageCollection/GarbageCollection";
 import Invoice from "./AdminPannel/pages/Invoice/Invoice";
 // import AdminLayout from "./AdminPannel/AdminLayout/AdminLayout";
-import ProductListSkeleton from "./components/ProductListSkeleton/ProductListSkeleton";
+// import ProductListSkeleton from "./components/ProductListSkeleton/ProductListSkeleton";
 // import AdminRoute from "./AdminPannel/components/AdminRoute/AdminRoute";
 import Payment2 from "./components/Payment2/Payment2";
 import Category from "./category/Category";
-import SizeModal from "./components/SizeModal/SizeModal";
+// import SizeModal from "./components/SizeModal/SizeModal";
 import Overview from "./AdminPannel/Overview/Overview";
 import SizeChart from "./AdminPannel/components/SizeChart/SizeChart";
+import ControllerPrivateRoute from "./AdminPannel/components/ControllerPrivateRoute/ControllerPrivateRoute";
 // import Category from "./category/Category";
 
 const App = () => {
@@ -65,55 +66,51 @@ const App = () => {
             <Route path="/test" element={<QuickView />}></Route>
             <Route path="/image" element={<ImageUpload />}></Route>
             <Route path="/home" element={<Home></Home>}></Route>
-            <Route path='/sizeChart' element={<SizeChart/>}></Route>
-            {/* <Route
-              path="/category/:category"
-              element={<CategoryPage></CategoryPage>}
-            ></Route> */}
-            <Route path="/test2" element={<ProductListSkeleton/>}></Route>
+            <Route path="/sizeChart" element={<SizeChart />}></Route>
+
             <Route
               path="/productDetails/:id"
               element={<ProductDetails />}
             ></Route>
             {/* search by category start*/}
-            <Route path='/category/:categoryName' element={<Category/>}></Route>
+            <Route
+              path="/category/:categoryName"
+              element={<Category />}
+            ></Route>
             {/* search by category end*/}
             <Route path="/categoryPage" element={<SameCategory />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/register" element={<Register />}></Route>
             <Route path="/shoppingCart" element={<ShoppingCart />}></Route>
             <Route path="/paymentPage" element={<Payment2 />}></Route>
-            {/* <Route path="/paymentPage" element={<PaymentPage />}></Route> */}
+
             <Route path="orderSuccess" element={<OrderSuccess />}></Route>
             <Route path="/adminLogin" element={<AdminLogin />}></Route>
             {/* //  admin and dashboard page start */}
-             
-            <Route path="/dashboard">
-            <Route path="" element={<AdminLogin />}></Route>
-            <Route path="overview" element={<Overview />}></Route>
+            <Route path="/adminLogin" element={<AdminLogin />}></Route>
+            <Route path="/dashboard" element={<ControllerPrivateRoute></ControllerPrivateRoute>}>
+              
+              <Route path="overview" element={<Overview />}></Route>
               {/* <AdminLayout> */}
-                {/* <Route path="users" element={<AllUsers />}></Route> */}
-                <Route path="edit/:id" element={<EditProduct />}></Route>
-                <Route path="upload" element={<UploadProduct />}></Route>
-               
-                <Route
-                  path="orders"
-                  element={<OrderCollection></OrderCollection>}
-                />
-                <Route path="orders/:orderId" element={<ViewOrder />}></Route>
-                <Route path="control" element={<Control></Control>} />
-                <Route
-                  path="createCategory"
-                  element={<CreateCategory />}
-                ></Route>
-                <Route path="allProducts" element={<ProductTable />}></Route>
-                <Route path="garbage" element={<GarbageCollection />}></Route>
-                <Route path="orders/invoice/:id" element={<Invoice />}></Route>
+              {/* <Route path="users" element={<AllUsers />}></Route> */}
+              <Route path="edit/:id" element={<EditProduct />}></Route>
+              <Route path="upload" element={<UploadProduct />}></Route>
+
+              <Route
+                path="orders"
+                element={<OrderCollection></OrderCollection>}
+              />
+              <Route path="orders/:orderId" element={<ViewOrder />}></Route>
+              <Route path="control" element={<Control></Control>} />
+              <Route path="createCategory" element={<CreateCategory />}></Route>
+              <Route path="allProducts" element={<ProductTable />}></Route>
+              <Route path="garbage" element={<GarbageCollection />}></Route>
+              <Route path="orders/invoice/:id" element={<Invoice />}></Route>
               {/* </AdminLayout> */}
             </Route>
 
             {/* //  admin and dashboard page end */}
-            <Route path="/test3" element={<SizeModal/>}></Route>
+          
           </Routes>
         </MainPageLayout>
       </AuthProvider>
@@ -122,4 +119,3 @@ const App = () => {
 };
 
 export default App;
-

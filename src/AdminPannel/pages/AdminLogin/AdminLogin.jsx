@@ -18,11 +18,10 @@ const AdminLogin = () => {
     window.scrollTo(0, 0);
   }, [dispatch]);
 
-  const { login } = useAuth();
+  const { login, logout } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       setError("");
       setLoading(true);
@@ -38,6 +37,7 @@ const AdminLogin = () => {
 
   return (
     <div className="login">
+      <button onClick={()=>logout()}>Logout</button>
       <div className="container">
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>

@@ -38,7 +38,7 @@ const Payment2 = () => {[]
         <div className="m-4">
             <div className=" w-full flex flex-wrap flex-col items-center">
                 <div className="flex flex-col  gap-2  items-center">
-                    <img src="public/bkash_logo.png" className="w-32 p-2" alt="" />
+                    <img src="/bkash_logo.png" className="w-32 p-2" alt="" />
                     <div className="flex flex-wrap justify-around w-full">
                         <div className="flex flex-col justify-center align-center px-4 border  rounded-lg">
                             <div className="flex w-full gap-1">
