@@ -51,7 +51,7 @@ function SizeChart() {
           <div key={item._id} className="border-2  overflow-hidden">
             {/* {console.log(item)} */}
             <div className="flex justify-between font-semibold bg-white px-4 text-xl items-center">
-                {console.log(item)}
+                {/* {console.log(item)} */}
               <p className="">{item?.sizeChart}</p>
               <p
                 onClick={() => handleDelete(item?._id)}

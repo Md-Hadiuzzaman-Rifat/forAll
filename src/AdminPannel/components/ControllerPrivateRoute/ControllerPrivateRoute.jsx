@@ -4,7 +4,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 const ControllerPrivateRoute = () => {
     const {currentUser}= useAuth() || {}
-    console.log(currentUser);
+    // console.log(currentUser);
     
     const {data, isLoading}= useGetUsersQuery()
     let person= data?.find(e=>e.email===currentUser?.email)

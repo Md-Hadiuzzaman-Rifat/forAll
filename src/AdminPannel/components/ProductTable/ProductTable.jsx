@@ -8,7 +8,7 @@ import AdminLayout from "../../AdminLayout/AdminLayout";
 
 const ProductTable = () => {
   const {data, isSuccess, isError, isLoading}=useGetProductsQuery()
-console.log(data);
+// console.log(data);
   return (
     <AdminLayout>
     <div className="productTable container pb-8">
