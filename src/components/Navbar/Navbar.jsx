@@ -255,8 +255,8 @@ export default function Navbar() {
                   <Link to="/">
                     <span className="sr-only">Your Company</span>
                     <img
-                      className="h-8 md:h-16 w-auto"
-                      src="/urbanregionbd.png"
+                      className="h-8 md:h-12 w-auto"
+                      src={import.meta.env.VITE_LOGO}
                       alt=""
                     />
                   </Link>

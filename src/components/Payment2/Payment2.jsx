@@ -35,15 +35,15 @@ const Payment2 = () => {[]
     },[successData, navigate])
     
     return (
-        <div className="m-4">
+        <div className="m-4 mb-16">
             <div className=" w-full flex flex-wrap flex-col items-center">
                 <div className="flex flex-col  gap-2  items-center">
                     <img src="/bkash_logo.png" className="w-32 p-2" alt="" />
                     <div className="flex flex-wrap justify-around w-full">
                         <div className="flex flex-col justify-center align-center px-4 border  rounded-lg">
                             <div className="flex w-full gap-1">
-                                <img className="h-12" src="/urbanRegion_Bd.jpg" alt="" />
-                            <p className="font-abc font-semibold text-xl mt-[8px]">Urban Region</p>
+                                <img className="h-12" src={import.meta.env.VITE_LOGO} alt="" />
+                            <p className="font-abc font-semibold text-xl mt-[8px]">{import.meta.env.VITE_WEB_NAME}</p>
                             </div>
                         </div>
                         <div className="p-4 border rounded-lg font-bold font-abc">

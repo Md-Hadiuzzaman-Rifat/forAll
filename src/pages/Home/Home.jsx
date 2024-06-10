@@ -74,6 +74,9 @@ const Home = () => {
       
       <RightCart></RightCart>
       <Hero />
+      {/* {
+        console.log(import.meta.env.VITE_WEB_NAME)
+      } */}
       
       <Notice></Notice>
       <Bars item={bars[0]}></Bars> 

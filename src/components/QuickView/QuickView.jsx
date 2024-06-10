@@ -32,7 +32,7 @@ export default function QuickView() {
   };
 
   const addCount = () => {
-    if (!selectSize) {
+    if ( value?.extra && !selectSize) {
       setWarning(true);
     } else {
       setCount((prev) => prev + 1);
@@ -138,7 +138,7 @@ export default function QuickView() {
                         {
                           value?.description?.stock && <form>
                           <div className="flex flex-row gap-2 mt-2 flex-wrap">
-                            {sizes.map((item, index) => (
+                            {sizes?.map((item, index) => (
                               <div
                                 key={index}
                                 className={`${
@@ -153,6 +153,9 @@ export default function QuickView() {
                             ))}
                           </div>
                           {/* // warning  */}
+                          {
+                            console.log(value)
+                          }
                           <div style={warning ? { display: "block" } : { display: "none" }}>
         <p className="bg-red-200 border font-semibold text-red-700 border-red-700 rounded-sm p-1 text-center mt-2 duration-100 font-abc">
           Please Select Size
@@ -162,7 +165,7 @@ export default function QuickView() {
                             onClick={addCount}
                             
                             className={`focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 cursor-pointer
-                            text-center focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-2 md:py-4 lg:mt-4 mt-2 ${warning && "hover:bg-gray-400"}`}
+                            text-center focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-2  lg:mt-4 mt-2 ${warning && "hover:bg-gray-400"}`}
                           >
                             Add to bag
                           </p>

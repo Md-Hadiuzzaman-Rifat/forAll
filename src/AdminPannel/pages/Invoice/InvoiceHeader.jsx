@@ -5,7 +5,7 @@ const InvoiceHeader = ({ details }) => {
     <div className="invoiceHeader font-abc leading-5 pt-4">
       <div className="invoice-top">
         <div>
-          <h1 className="invoice-logo">Urban Region BD</h1>
+          <h1 className="invoice-logo">{import.meta.env.VITE_WEB_NAME}</h1>
           <p>Invoice Id: {details?._id}</p>
           <p>Date: {details?.date}</p>
         </div>
@@ -18,7 +18,7 @@ const InvoiceHeader = ({ details }) => {
         <div className="flex flex-row w-full justify-between items-center">
           <div>
             <p>
-              BILL FROM: <strong>Urban Region BD</strong>
+              BILL FROM: <strong>{import.meta.env.VITE_WEB_NAME}</strong>
             </p>
 
             <p>Phone: +8801876273090</p>

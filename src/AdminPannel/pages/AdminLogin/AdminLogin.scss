@@ -2,7 +2,7 @@
 $primary-color: #3a7bd5;
 
 .login{
-    margin-top: 10%;
+    // margin-top: 10%;
     .container {
         width: 500px;
         min-width: 310px;
@@ -30,7 +30,7 @@ $primary-color: #3a7bd5;
         }
     
         input {
-            min-width: 300px;
+            // min-width: 300px;
            width: 95%;
             padding: 10px;
             font-size: 16px;
@@ -40,8 +40,7 @@ $primary-color: #3a7bd5;
     }
     .button-field {
         text-align: center;
-    
-        button {
+        .button-field1{
             background-color: $primary-color;
             color: #fff;
             padding: 10px 20px;
@@ -55,5 +54,22 @@ $primary-color: #3a7bd5;
                 background-color: darken($primary-color, 10%);
             }
         }
+        .button-field2{
+            background-color: red;
+            margin-left: 1rem;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+    
+            &:hover {
+                background-color: darken($primary-color, 10%);
+            }
+        }
+    
+
     }
 }

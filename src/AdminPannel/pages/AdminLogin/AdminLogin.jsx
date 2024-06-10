@@ -37,7 +37,7 @@ const AdminLogin = () => {
 
   return (
     <div className="login">
-      <button onClick={()=>logout()}>Logout</button>
+      
       <div className="container">
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
@@ -63,9 +63,10 @@ const AdminLogin = () => {
           </div>
           {error && <p className="error">{error}</p>}
           <div className="button-field">
-            <button disabled={loading} type="submit">
+            <button className="button-field1" disabled={loading} type="submit">
               Login
             </button>
+            <button className="button-field2" onClick={()=>logout()}>Logout</button>
           </div>
         </form>
       </div>
