@@ -3,6 +3,7 @@
 
 import { Link } from "react-router-dom";
 import { useGetCategoryQuery } from "../../features/category/categoryApi";
+import ProductListSkeleton from "../ProductListSkeleton/ProductListSkeleton";
 
 const CategoryItem = () => {
   const { data, isLoading, isSuccess } = useGetCategoryQuery();
@@ -10,7 +11,7 @@ const CategoryItem = () => {
   return (
     <div className="py-8">
       <div className="container">
-        {isLoading && <p>Sorry for loading...</p>}
+        {isLoading && <ProductListSkeleton/>}
         {!isLoading && data?.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* first col */}
