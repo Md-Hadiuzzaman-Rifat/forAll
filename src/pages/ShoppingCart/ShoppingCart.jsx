@@ -23,9 +23,9 @@ const ShoppingCart = () => {
     window.scrollTo(0, 0);
   }, []);
 
-{
-  console.log(cart);
-}
+// {
+//   console.log(cart);
+// }
 
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -81,6 +81,8 @@ const ShoppingCart = () => {
           </div>
         </div>
       )}
+
+     
 
       {cart?.cartItems?.length > 0 && (
         <div>

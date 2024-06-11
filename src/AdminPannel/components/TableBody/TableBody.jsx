@@ -68,7 +68,7 @@ const TableBody = ({ data }) => {
       <td className="px-6 py-4">{discount}</td>
       <td className="px-6 py-4">
         <img
-          className="max-w-20"
+          className="max-w-20 max-h-20 object-cover"
           src={`${import.meta.env.VITE_ROOT_API}/Images/${images[0]?.filename}`}
           alt=""
         />

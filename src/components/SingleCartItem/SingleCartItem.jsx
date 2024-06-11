@@ -103,11 +103,11 @@ const SingleCartItem = ({product}) => {
           </div>)
           }
           
-          
           {/* / */}
           <div className="flex items-center max-[500px]:justify-center md:justify-end max-md:mt-3 h-full">
             <p className="text-lg leading-8 text-gray-600 text-center dark:text-gray-300">
-              {/* {cart.cartTotalQuantity*price} Taka */} {""}
+  
+              {product?.cartQuantity*product?.price} Taka {""}
             </p>
           </div>
         </div>
