@@ -33,8 +33,8 @@ const CreateCategory = () => {
       {/* {
           addSuccess && <Modal></Modal>
       } */}
-      <h1 className="text-3xl font-semibold">
-        Create Category and SubCategory
+      <h1 className="text-3xl font-abc font-bold text-orange-500 underline">
+        Create Category
       </h1>
     
       <CategoryForm></CategoryForm>
