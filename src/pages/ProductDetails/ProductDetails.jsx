@@ -14,6 +14,7 @@ import DetailsSkeleton from "../../components/DetailsSkeleton/DetailsSkeleton";
 import { useSelector } from "react-redux";
 import QuickView from "../../components/QuickView/QuickView";
 
+
 const ProductDetails = () => {
   const { id } = useParams();
   const { data, isLoading, isError, isSuccess } = useGetSingleProductQuery(id);
@@ -28,6 +29,7 @@ const ProductDetails = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  console.log(data)
 
   return (
     <div>

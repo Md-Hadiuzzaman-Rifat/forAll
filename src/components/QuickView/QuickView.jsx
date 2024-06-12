@@ -133,10 +133,10 @@ export default function QuickView() {
                         </h3>
                         {/* // stock check start */}
                         {
-                          !value?.description?.stock && <div className="text-white bg-red-500 font-mont font-semibold text-center mt-4 p-2 tracking-wide">Stock Out...</div>
+                          value?.description?.stock ==="false" && <div className="text-white bg-red-500 font-mont font-semibold text-center mt-4 p-1 tracking-wide">Stock Out...</div>
                         }
                         {
-                          value?.description?.stock && <form>
+                          value?.description?.stock === "true" && <form>
                           <div className="flex flex-row gap-2 mt-2 flex-wrap">
                             {sizes?.map((item, index) => (
                               <div

@@ -22,7 +22,10 @@ export default function SampleProduct({ data }) {
                       alt=""
                       className="cursor-pointer h-[180px] sm:h-[220px] w-full object-cover "
                     />
-                    <p className="absolute top-0 left-0 bg-red-500 px-2 py-[2px] text-sm font-semibold text-gray-100">
+                    {
+                      product?.description?.stock === "false" && <p className="absolute top-20 left-1/2 transform -translate-x-1/2  min-w-28 text-center py-1 bg-red-500 text-white px-4 rounded-sm font-abc font-semibold ">STOCK OUT</p>
+                    }
+                    <p className="absolute top-0 left-0 bg-green-600 px-2 py-[2px] text-sm font-semibold text-gray-100">
                       <span>Save TK : </span> 
 
                       {Math.ceil(product?.description?.price - product?.description?.discount)} 

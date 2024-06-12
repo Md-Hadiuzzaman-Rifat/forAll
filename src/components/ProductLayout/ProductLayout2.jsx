@@ -38,11 +38,13 @@ const ProductLayout2 = ({ data }) => {
               <p className="font-semibold">৳{discount}</p>
               <p className="font-thin line-through">৳{price}</p>
             </div>
+            
+            {
+              data?.description?.stock ==="false" && <p className="absolute bg-red-500 px-4 text-white font-abc font-semibold rounded-b-lg">Stock out</p>
+            }
           </div>
           <div>
-            {/* {
-              console.log(data)
-            } */}
+           
             <p onClick={()=>handlePopUp(data)} className="text-center mt-4 bg-gray-800 text-white p-1 cursor-pointer font-semibold">
               {" "}
               + Quick View

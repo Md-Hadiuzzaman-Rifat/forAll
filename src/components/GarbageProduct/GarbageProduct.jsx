@@ -13,7 +13,7 @@ const GarbageProduct = ({data}) => {
     
     useEffect(()=>{
         if(isSuccess){
-            console.log("deleted");
+            alert('Deleted Successfully') ? "" : location.reload()
         }
     },[isSuccess])
 

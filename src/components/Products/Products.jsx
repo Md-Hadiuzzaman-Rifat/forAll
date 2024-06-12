@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import ProductCard from "./ProductCard";
 
-const Products = ({ data }) => {
+const Products = ({ data, sub}) => {
+
   return (
     <div>
       <div className="container mt-8">
@@ -10,7 +11,7 @@ const Products = ({ data }) => {
             {data?.length > 0 &&
               data
                 ?.filter((item) =>
-                  item?.description?.subcategory?.includes("flash deals")
+                  item?.description?.subcategory?.includes(sub)
                 )
                 .map((item, index) => (
                   <ProductCard key={item._id} data={item} index={index} />

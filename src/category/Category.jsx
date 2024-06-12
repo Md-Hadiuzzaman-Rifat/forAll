@@ -30,7 +30,6 @@ export default function Category() {
           {isSuccess &&
             !isLoading &&
             data
-
               ?.filter(
                 (item) =>
                   item?.description?.category?.toLowerCase() ===

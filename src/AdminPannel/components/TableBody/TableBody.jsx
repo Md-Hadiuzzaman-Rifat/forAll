@@ -38,8 +38,9 @@ const TableBody = ({ data }) => {
   const handleDelete = async(id) => {
     let res= await Promise.all([editGarbage(id), deleteGarbage(id)])
 
-    alert("Product Deleted Successfully.")
-    window.location.reload();
+    // alert("Product Deleted Successfully.")
+    // window.location.reload();
+    alert('Deleted Successfully!') ? "" : location.reload()  
   };
 
   const handleEdit = (id) => {
@@ -61,7 +62,7 @@ const TableBody = ({ data }) => {
       <td className="px-6 py-4">
         <div className="flex items-center">
           <div className="h-2.5 w-2.5 rounded-full bg-red-500 me-2"></div>{" "}
-          {subcategory}
+          { subcategory}
         </div>
       </td>
       <td className="px-6 py-4">{price}</td>
@@ -74,7 +75,7 @@ const TableBody = ({ data }) => {
         />
       </td>
       
-      <td className="px-6 py-4">{stock ? "Available" :"stock out" }</td>
+      <td className="px-6 py-4">{stock === "true" ? "Available" :"stock out" }</td>
       <td className="px-6 py-4">{extra}</td>
       <td className=" px-6 py-4 ">
         <div className="flex gap-1 items-center">

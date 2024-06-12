@@ -44,11 +44,10 @@ export default function ProductUploadForm() {
   const [files, setFile] = useState([]);
   const [message, setMessage] = useState();
   const [error, setError]= useState(false)
-  const [stock, setStock]= useState(true)
+  const [stock, setStock]= useState("true")
   const [sizeChart, setSizeChart]=useState(null)
 
   const dispatch = useDispatch();
-
 
   const handleFile = (e) => {
     setMessage("");
@@ -80,6 +79,7 @@ export default function ProductUploadForm() {
 
     addProduct(formData)
   };
+  
 
   const rest=()=>{
     setProductName("")
@@ -91,7 +91,7 @@ export default function ProductUploadForm() {
     setPrice("")
     setVideoLink("")
     setOtherLink("")
-    setStock(true)
+    setStock("true")
     setError(true)
     setFile([])
     setShortDescription([])
@@ -181,7 +181,7 @@ export default function ProductUploadForm() {
                 <input
                 value={review}
                   min="1"
-                  max="5"
+                  max="1000"
                   onChange={(e) => setReview(e.target.value)}
                   type="number"
                   name="review"
@@ -319,8 +319,8 @@ export default function ProductUploadForm() {
                   onChange={(e) => setStock(e.target.value)}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                  <option value={true}>Available</option>
-                  <option value={false}>Not Available</option>
+                  <option value="true">Available</option>
+                  <option value="false">Not Available</option>
                 </select>
               </div>
             </div>

@@ -39,6 +39,7 @@ const DetailsContent = ({ desc, img }) => {
     otherLink,
     sizeChart
   } = desc || {};
+  console.log(desc);
 
   const sizes = makeSizes(extra);
 
@@ -118,13 +119,9 @@ const DetailsContent = ({ desc, img }) => {
 
       {/* // total start  */}
       <div className=" flex flex-row justify-between  mt-5">
-        <div className=" flex flex-row space-x-3 text-xl">
-          {newArr.map((val) => (
-            <MdOutlineStar className="mr-[-14px]" key={val} />
-          ))}
-        </div>
+        
         <p className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-700 hover:underline hover:text-gray-800 duration-100 font-abc cursor-pointer">
-          22 reviews
+          {review} reviews
         </p>
       </div>
       {/* price  */}
@@ -176,13 +173,13 @@ const DetailsContent = ({ desc, img }) => {
       </div>
       {/* // stock check  */}
 
-      {!stock && (
+      {stock ==="false" && (
         <div className="text-white bg-red-500 font-mont font-semibold text-center mt-4 p-2 tracking-wide">
           Stock Out...
         </div>
       )}
 
-      {stock && (
+      {stock === "true" && (
         <div>
           {/* // quantity start */}
           <div className="lg:mt-11 mt-10">

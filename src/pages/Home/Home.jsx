@@ -74,15 +74,16 @@ const Home = () => {
       
       <RightCart></RightCart>
       <Hero />
-      {/* {
-        console.log(import.meta.env.VITE_WEB_NAME)
-      } */}
-      
       <Notice></Notice>
-      <Bars item={bars[0]}></Bars> 
-      {/* <NewCategory></NewCategory> */}
       <CategoryItem />
       <Services />
+      <Bars item={bars[0]}></Bars> 
+      {/* <NewCategory></NewCategory> */}
+      {/* // new ar   */}
+      {
+        !isLoading && isSuccess && data && <Products sub="new arrival" data={data}></Products>
+      }
+      
       <Bars item={bars[1]} id="top rated"></Bars>
        {/* top rated  */}
        {
@@ -95,7 +96,7 @@ const Home = () => {
       <Bars item={bars[2]} id="flash deals"></Bars>
       {/* // flash deals   */}
       {
-        !isLoading && isSuccess && data && <Products data={data}></Products>
+        !isLoading && isSuccess && data && <Products sub="flash deals" data={data}></Products>
       }
       <Banner data={BannerData2} />
       <Blogs />
