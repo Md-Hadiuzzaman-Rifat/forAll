@@ -43,6 +43,7 @@ const CreateCategory = () => {
       <form onSubmit={handleSubCategory} className="flex gap-2 ">
         <div>
           <input
+          required
             onChange={(e) => setNewSubCategory(e.target.value)}
             value={newSubCategory}
             type="text"
