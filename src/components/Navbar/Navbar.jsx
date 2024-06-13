@@ -21,12 +21,6 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
-  const navigateCategory = (url) => {
-    console.log("fuck");
-    navigate(url);
-    setOpen(false);
-  };
-
   const { data, isLoading } = useGetCategoryQuery();
 
   const [stickyClass, setStickyClass] = useState("relative");
@@ -46,6 +40,12 @@ export default function Navbar() {
         ? setStickyClass("fixed top-0 left-0 z-50 shadow-lg")
         : setStickyClass("relative");
     }
+  };
+  const navigateCategory = (url) => {
+    navigate(url);
+    setOpen(false);
+    console.log(open);
+    console.log(typeof open);
   };
 
   return (
@@ -102,7 +102,7 @@ export default function Navbar() {
                         <div className="grid grid-cols-2 gap-x-4">
                           {data?.map((item) => (
                             <div
-                              key={item._id}
+                              key={item?._id}
                               className="group relative text-sm"
                             >
                               <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
@@ -128,13 +128,15 @@ export default function Navbar() {
                         </div>
 
                         {data?.map((item) => (
-                          <li key={item._id} className="flow-root" onClick={()=>navigateCategory(`category/${item?.category}`)}>
-                            
+                          <li key={item?._id} className="flow-root">
+                            <span
+                              className=" cursor-pointer"
+                              onClick={() =>
+                                navigateCategory(`category/${item?.category}`)
+                              }
+                            >
                               {item?.category?.toUpperCase()}
-                            
-                            {/* <Link to={`category/${item?.category}`}>
-                              {item?.category?.toUpperCase()}
-                            </Link> */}
+                            </span>
                           </li>
                         ))}
                       </Tab.Panel>
@@ -202,6 +204,7 @@ export default function Navbar() {
                             </div>
 
                             <Transition
+                              className={open ? "block" : "hidden"}
                               as={Fragment}
                               enter="transition ease-out duration-200"
                               enterFrom="opacity-0"
@@ -210,6 +213,7 @@ export default function Navbar() {
                               leaveFrom="opacity-100"
                               leaveTo="opacity-0"
                             >
+                              
                               <Popover.Panel className="absolute z-50 inset-x-0 top-full text-sm text-gray-500">
                                 <div
                                   className="absolute inset-0 top-1/2 bg-white shadow"
@@ -222,7 +226,7 @@ export default function Navbar() {
                                       <div className="col-start-2 grid grid-cols-2 gap-x-8">
                                         {data?.map((item) => (
                                           <div
-                                            key={item._id}
+                                            key={item?._id}
                                             className="group relative text-base sm:text-sm"
                                           ></div>
                                         ))}
@@ -244,22 +248,32 @@ export default function Navbar() {
                                       <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
                                         {data?.map((item) => (
                                           <li
-                                            key={item?.category}
+                                            key={item?._id}
                                             className="flex"
-                                            onClick={()=>navigateCategory(`category/${item?.category}`)}
+                                            
                                           >
-                                            {/* <Link
-                                              to={`category/${item?.category}`}
-                                            >
-                                              <span className="text-[16px] font-semibold">
-                                                {item?.category?.toUpperCase()}
-                                              </span>
-                                            </Link> */}
-                                            <span className="text-[16px] font-semibold">
-                                                {item?.category?.toUpperCase()}
-                                              </span>
+                                            <a href={`/category/${item?.category}`}>
+                                            <span className="text-[16px] font-semibold cursor-pointer ">
+                                              {item?.category?.toUpperCase()}
+                                            </span>
+                                            </a>
                                           </li>
                                         ))}
+                                        {/* {data?.map((item) => (
+                                          <li
+                                            key={item?._id}
+                                            className="flex"
+                                            onClick={() =>
+                                              navigateCategory(
+                                                `category/${item?.category}`
+                                              )
+                                            }
+                                          >
+                                            <span className="text-[16px] font-semibold cursor-pointer ">
+                                              {item?.category?.toUpperCase()}
+                                            </span>
+                                          </li>
+                                        ))} */}
                                       </div>
                                     </div>
                                   </div>
