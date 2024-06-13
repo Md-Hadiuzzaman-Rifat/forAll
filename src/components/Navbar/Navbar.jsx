@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
@@ -7,73 +8,10 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
-import "./Navbar.scss"
+import "./Navbar.scss";
 import { PiPhoneCallLight } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { useGetCategoryQuery } from "../../features/category/categoryApi";
-
-
-const navigation = {
-  categories: [
-    {
-      id: "men",
-      name: "Shop",
-      featured: [
-        {
-          name: "Top Rated",
-          href: "/",
-          imageSrc:
-            "https://i.ibb.co/ZxdDH0w/IMG-2557.png",
-          imageAlt:
-            "Drawstring top with elastic loop closure and textured interior padding.",
-        },
-        {
-          name: "Artwork Tees",
-          href: "/",
-          imageSrc:
-            "https://i.ibb.co/Br31f9K/Whats-App-Image-2024-05-15-at-5-25-28-PM-1.jpg",
-          imageAlt:
-            "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
-        },
-      ],
-      sections: [
-        {
-          id: "unisex",
-          name: "Unisex",
-          items: [
-            { name: "Drop Shoulder", href: "/category/drop shoulder" },
-            { name: "Hoodie", href: "/category/hoodie" },
-            { name: "T-Shirt", href: "/category/t-shirt" },
-          ],
-        },
-        {
-          id: "male",
-          name: "Male",
-          items: [
-            { name: "Drop Shoulder", href: "/category/drop shoulder" },
-            { name: "Cargo Pants", href: "/category/Cargo Pants" },
-            { name: "Jersey", href: "/category/jersey" },
-            { name: "T-Shirt", href: "/category/t-shirt" },
-            { name: "Hoodie", href: "/category/hoodie" },
-          ],
-        },
-        {
-          id: "female",
-          name: "Female",
-          items: [
-            { name: "Drop Shoulder", href: "/category/drop shoulder" },
-            { name: "Hoodie", href: "/category/hoodie" },
-            { name: "T-Shirt", href: "/category/t-shirt" },
-            
-          ],
-        },
-      ],
-    },
-  ],
-  pages: [
-    
-  ],
-};
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -81,29 +19,34 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const navigate= useNavigate()
+  const navigate = useNavigate();
 
-  const {data, isLoading}= useGetCategoryQuery()
+  const navigateCategory = (url) => {
+    console.log("fuck");
+    navigate(url);
+    setOpen(false);
+  };
 
-  const [stickyClass, setStickyClass] = useState('relative');
+  const { data, isLoading } = useGetCategoryQuery();
+
+  const [stickyClass, setStickyClass] = useState("relative");
 
   useEffect(() => {
-    window.addEventListener('scroll', stickNavbar);
+    window.addEventListener("scroll", stickNavbar);
 
     return () => {
-      window.removeEventListener('scroll', stickNavbar);
+      window.removeEventListener("scroll", stickNavbar);
     };
   }, []);
 
   const stickNavbar = () => {
     if (window !== undefined) {
       let windowHeight = window.scrollY;
-      windowHeight > 200 ? setStickyClass('fixed top-0 left-0 z-50 shadow-lg') : setStickyClass('relative');
+      windowHeight > 200
+        ? setStickyClass("fixed top-0 left-0 z-50 shadow-lg")
+        : setStickyClass("relative");
     }
   };
-
-
-
 
   return (
     <div className="relative">
@@ -150,77 +93,54 @@ export default function Navbar() {
                     </button>
                   </div>
 
+                  {isLoading && "sorry for loading..."}
 
-                  {
-                    isLoading && "sorry for loading..."
-                  }
-                  
-                  
                   <Tab.Group as="div" className="mt-2">
-                    
                     <Tab.Panels as={Fragment}>
-                      
-                        <Tab.Panel
-                          className="space-y-10 px-4 pb-8 pt-10"
-                        >
-
-                          {/* // for image start  */}
-                          <div className="grid grid-cols-2 gap-x-4">
-                            {data?.map((item) => (
-                              
-                              <div 
-                                key={item._id}
-                                className="group relative text-sm"
-                              >
-                                
-                                <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                                  <img
-                                    src={`${import.meta.env.VITE_ROOT_API}/Images/${item?.image}`}
-                                    
-                                    className="object-cover object-center"
-                                  />
-                                </div>
-                                <a
-                                  href={item.href}
-                                  className="mt-6 block font-medium text-gray-900"
-                                >
-                                  <span
-                                    className="absolute inset-0 z-10"
-                                    aria-hidden="true"
-                                  />
-                                  {item.name}
-                                </a>
-                                <p aria-hidden="true" className="mt-1">
-                                  Shop now
-                                </p>
+                      <Tab.Panel className="space-y-10 px-4 pb-8 pt-10">
+                        {/* // for image start  */}
+                        <div className="grid grid-cols-2 gap-x-4">
+                          {data?.map((item) => (
+                            <div
+                              key={item._id}
+                              className="group relative text-sm"
+                            >
+                              <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                                <img
+                                  src={`${
+                                    import.meta.env.VITE_ROOT_API
+                                  }/Images/${item?.image}`}
+                                  className="object-cover object-center"
+                                />
                               </div>
-                            ))}
-                          </div>
+                              <a
+                                href={item.href}
+                                className="mt-6 block font-medium text-gray-900"
+                              >
+                                <span
+                                  className="absolute inset-0 z-10"
+                                  aria-hidden="true"
+                                />
+                                {item.name}
+                              </a>
+                            </div>
+                          ))}
+                        </div>
 
-
-                          {
-                            data?.map((item) => (
-                              <li key={item._id} className="flow-root">
-                                <a
-                                  href={item.href}
-                                  className="-m-2 block p-2 text-gray-500"
-                                >
-                                
-                                  {item?.category}
-                                </a>
-                              </li>
-                            ))
-                          }
-                        </Tab.Panel>
-                      
+                        {data?.map((item) => (
+                          <li key={item._id} className="flow-root" onClick={()=>navigateCategory(`category/${item?.category}`)}>
+                            
+                              {item?.category?.toUpperCase()}
+                            
+                            {/* <Link to={`category/${item?.category}`}>
+                              {item?.category?.toUpperCase()}
+                            </Link> */}
+                          </li>
+                        ))}
+                      </Tab.Panel>
                     </Tab.Panels>
-                    
-                  </Tab.Group> 
+                  </Tab.Group>
                   {/* // work end now  */}
-
-
-
-
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -233,40 +153,39 @@ export default function Navbar() {
           </p>
           {/* // static navbar  */}
           <div className={`${stickyClass} w-full`}>
-          <nav
-            aria-label="Top"
-            className={`  bg-white mx-auto px-4 sm:px-6 lg:px-8 bg-opacity-95`}
-          >
-             {/* fixed top-10 left-0 right-0 z-50 */}
-            <div className="border-b border-gray-200">
-              <div className="flex h-16 items-center">
-                <button
-                  type="button"
-                  className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
-                  onClick={() => setOpen(true)}
-                >
-                  <span className="absolute -inset-0.5" />
-                  <span className="sr-only">Open menu</span>
-                  <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-                </button>
+            <nav
+              aria-label="Top"
+              className={`  bg-white mx-auto px-4 sm:px-6 lg:px-8 bg-opacity-95`}
+            >
+              {/* fixed top-10 left-0 right-0 z-50 */}
+              <div className="border-b border-gray-200">
+                <div className="flex h-16 items-center">
+                  <button
+                    type="button"
+                    className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
+                    onClick={() => setOpen(true)}
+                  >
+                    <span className="absolute -inset-0.5" />
+                    <span className="sr-only">Open menu</span>
+                    <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                  </button>
 
-                {/* Logo */}
-                <div className="ml-4 flex lg:ml-0">
-                  <Link to="/">
-                    <span className="sr-only">Your Company</span>
-                    <img
-                      className="h-8 md:h-12 w-auto"
-                      src={import.meta.env.VITE_LOGO}
-                      alt=""
-                    />
-                  </Link>
-                </div>
+                  {/* Logo */}
+                  <div className="ml-4 flex lg:ml-0">
+                    <Link to="/">
+                      <span className="sr-only">Your Company</span>
+                      <img
+                        className="h-8 md:h-12 w-auto"
+                        src={import.meta.env.VITE_LOGO}
+                        alt=""
+                      />
+                    </Link>
+                  </div>
 
-                {/* Flyout menus */}
-                <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
-                  <div className="flex h-full space-x-8">
-                    {navigation.categories.map((category) => (
-                      <Popover key={category.name} className="flex">
+                  {/* Flyout menus */}
+                  <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
+                    <div className="flex h-full space-x-8">
+                      <Popover className="flex">
                         {({ open }) => (
                           <>
                             <div className="relative flex">
@@ -278,7 +197,7 @@ export default function Navbar() {
                                   "relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out"
                                 )}
                               >
-                                {category.name}
+                                SHOP
                               </Popover.Button>
                             </div>
 
@@ -292,7 +211,6 @@ export default function Navbar() {
                               leaveTo="opacity-0"
                             >
                               <Popover.Panel className="absolute z-50 inset-x-0 top-full text-sm text-gray-500">
-                                {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
                                 <div
                                   className="absolute inset-0 top-1/2 bg-white shadow"
                                   aria-hidden="true"
@@ -300,53 +218,47 @@ export default function Navbar() {
 
                                 <div className="relative bg-white">
                                   <div className="mx-auto max-w-7xl px-8">
-                                    <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
+                                    <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-4">
                                       <div className="col-start-2 grid grid-cols-2 gap-x-8">
                                         {data?.map((item) => (
                                           <div
                                             key={item._id}
                                             className="group relative text-base sm:text-sm"
-                                          >
-                                            <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                                              <img
-                                                src={item.imageSrc}
-                                                alt={item.imageAlt}
-                                                className="object-cover object-center"
-                                              />
-                                            </div>
-                                            <a
-                                              href={item.href}
-                                              className="mt-6 block font-medium text-gray-900"
-                                            >
-                                              <span
-                                                className="absolute inset-0 z-10"
-                                                aria-hidden="true"
-                                              />
-                                              {item.name}
-                                            </a>
-                                            <p
-                                              aria-hidden="true"
-                                              className="mt-1"
-                                            >
-                                              Shop now
-                                            </p>
-                                          </div>
+                                          ></div>
                                         ))}
+                                        <div className="max-h-52 max-w-52 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                                          <img
+                                            src="https://i.ibb.co/PM0NjvF/Grey-Cream-Modern-Photo-Sale-Women-s-Fashion-Instagram-Post-1.jpg"
+                                            alt=""
+                                            className="object-cover object-center"
+                                          />
+                                        </div>
+                                        <div className="max-h-52 max-w-52 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                                          <img
+                                            src="https://i.ibb.co/Sf9VFZn/Minimalist-NEW-ARRIVAL-Promo-discount-instagram-post-Instagram-Post-2.jpg"
+                                            alt=""
+                                            className="object-cover object-center"
+                                          />
+                                        </div>
                                       </div>
                                       <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-
                                         {data?.map((item) => (
-                                                <li
-                                                  key={item?.category}
-                                                  className="flex"
-                                                >
-                                                  <a
-                                                    href={item.href}
-                                                    className="hover:text-gray-800"
-                                                  >
-                                                    {item.category}
-                                                  </a>
-                                                </li>
+                                          <li
+                                            key={item?.category}
+                                            className="flex"
+                                            onClick={()=>navigateCategory(`category/${item?.category}`)}
+                                          >
+                                            {/* <Link
+                                              to={`category/${item?.category}`}
+                                            >
+                                              <span className="text-[16px] font-semibold">
+                                                {item?.category?.toUpperCase()}
+                                              </span>
+                                            </Link> */}
+                                            <span className="text-[16px] font-semibold">
+                                                {item?.category?.toUpperCase()}
+                                              </span>
+                                          </li>
                                         ))}
                                       </div>
                                     </div>
@@ -357,38 +269,42 @@ export default function Navbar() {
                           </>
                         )}
                       </Popover>
-                    ))}
+                    </div>
+                  </Popover.Group>
+                  <div className="ml-auto flex items-center">
+                    {/* Contact */}
+                    <div className="flex lg:ml-6 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
+                      <a
+                        href={`tel:{+88${import.meta.env.VITE_PHONE}}`}
+                        className="flex items-center gap-2"
+                      >
+                        <PiPhoneCallLight className=" mb-1  text-gray-400 " />{" "}
+                        <span className="text-gray-400 font-abc">
+                          +88 {import.meta.env.VITE_PHONE}
+                        </span>
+                      </a>
+                    </div>
 
-                    
+                    {/* Cart */}
+                    <div
+                      className="ml-4 flow-root lg:ml-6"
+                      onClick={() => navigate("/shoppingCart")}
+                    >
+                      <a href="#" className="group -m-2 flex items-center p-2">
+                        <ShoppingBagIcon
+                          className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                          aria-hidden="true"
+                        />
+                        <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+                          0
+                        </span>
+                        <span className="sr-only">items in cart, view bag</span>
+                      </a>
+                    </div>
                   </div>
-                </Popover.Group>
-                <div className="ml-auto flex items-center">
-                  {/* Contact */}
-                  <div className="flex lg:ml-6 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
-                    <a href={`tel:{+88${import.meta.env.VITE_PHONE}}`} className="flex items-center gap-2">
-                    
-                    <PiPhoneCallLight className=" mb-1  text-gray-400 "/> <span className="text-gray-400 font-abc">+88 {import.meta.env.VITE_PHONE}</span>
-                    </a>
-                  </div>
-
-                  {/* Cart */}
-                  <div className="ml-4 flow-root lg:ml-6" onClick={()=>navigate('/shoppingCart')}>
-                    <a href="#" className="group -m-2 flex items-center p-2">
-                      <ShoppingBagIcon
-                        className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                        aria-hidden="true"
-                      />
-                      <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                        0
-                      </span>
-                      <span className="sr-only">items in cart, view bag</span>
-                    </a>
-                  </div>
-
                 </div>
               </div>
-            </div>
-          </nav>
+            </nav>
           </div>
         </header>
       </div>
