@@ -39,9 +39,9 @@ export default function FooterBanner() {
               </div>
               <dt className="mt-4 font-semibold text-white">Our Shop Address</dt>
               <dd className="mt-2 leading-7 text-gray-400">
-                Mirpur-10, Block: A, Lane: 8, House no: 18
-                <p>Mirpur Benarashi Palli</p>
-                <p>Dhaka - 1216</p>
+                {import.meta.env.VITE_ADDRESS1}
+                <p>{import.meta.env.VITE_ADDRESS2}</p>
+                <p>{import.meta.env.VITE_ADDRESS3}</p>
               </dd>
             </div>
             <div className="flex flex-col items-start">
@@ -54,8 +54,8 @@ export default function FooterBanner() {
               </dd>
             </div>
           </dl>
-          <p className="mt-4 text-base leading-8 text-white font-semibold">
-              This Web Application Created and Maintained By <span className='text-orange-300 font-bold text-2xl mx-3'>PIPRA SOFT</span>
+          <p className="mt-4 text-base leading-8 text-white font-base">
+              This Web Application Created and Maintained By <span className='text-orange-300 font-bold text-xl mx-3'>PIPRA SOFT</span>
             </p>
         </div>
       </div>
