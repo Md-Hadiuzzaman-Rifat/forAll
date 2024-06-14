@@ -71,7 +71,6 @@ const Home = () => {
 
   return (
     <div>
-      
       <RightCart></RightCart>
       <Hero />
       <Notice></Notice>
