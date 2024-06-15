@@ -20,7 +20,7 @@ export default function Category() {
     <div className="bg-white " id={categoryName}>
       {open && <QuickView />}
       
-      <div className="container mt-4 mb-12">
+      <div className="container mt-4 mb-12 min-h-[60vh]">
         <h2 className="text-2xl font-bold  text-gray-900 bg-gray-100 font-abc p-2 mb-4">
           {categoryName?.toUpperCase()}
         </h2>

@@ -10,7 +10,7 @@ import {
 function CategoryForm() {
   const [file, setFile] = useState();
   const [category, setCategory] = useState();
-  const [addCategory, { isLoading: addLoading }] = useAddCategoryMutation();
+  const [addCategory, { isLoading: addLoading, isSuccess: addSuccess }] = useAddCategoryMutation();
   const { data: getCatData, isSuccess: getCatSuccess } = useGetCategoryQuery();
 
   const upload = (e) => {
@@ -22,7 +22,6 @@ function CategoryForm() {
       formData.append("file", file);
       formData.append("category", category?.toLowerCase());
       addCategory(formData);
-      alert("Added Successfully!") ? "" : location.reload();
     }
   };
 
@@ -38,6 +37,9 @@ function CategoryForm() {
 
   return (
     <div className="container mx-auto max-w-2xl py-5 sm:px-6 sm:py-12 lg:max-w-7xl">
+      {
+        addLoading && <h2 className="text-blue-500 mb-8 p-4 font-semibold text-2xl bg-blue-100 border-2 border-blue-500">Wait a second and Reload....</h2> 
+      }
       <form onSubmit={upload}>
         <input
           required

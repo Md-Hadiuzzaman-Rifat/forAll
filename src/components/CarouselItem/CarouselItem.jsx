@@ -34,7 +34,7 @@ const CarouselItem = ({ data }) => {
               ৳ {price}
             </h5>
             <h5 className="text-md font-semibold tracking-tight text-gray-900 dark:text-white font-abc	me-4">
-              ৳ {price - discount}
+              ৳ {discount}
             </h5>
           </div>
         </a>

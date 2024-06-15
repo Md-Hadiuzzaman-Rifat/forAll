@@ -26,7 +26,6 @@ function SizeChart() {
       formData.append("size", file);
       formData.append("sizeChart", sizeName.toLowerCase());
       sizeChart(formData);
-      alert("Added Successfully!") ? "" : location.reload();
     }
   };
 
@@ -39,8 +38,13 @@ function SizeChart() {
       alert("Deleted Successfully!") ? "" : location.reload();
   };
 
+
   return (
     <div className="container mx-auto max-w-2xl py-5 sm:px-6 sm:py-12 lg:max-w-7xl">
+
+{
+        addLoading && <h2 className="text-blue-500 mb-8 p-4 font-semibold text-2xl bg-blue-100 border-2 border-blue-500">Wait a second and Reload....</h2> 
+      }
       <h1 className="text-3xl mb-8 font-abc font-bold text-green-500 underline">
         Create Size Chart
       </h1>

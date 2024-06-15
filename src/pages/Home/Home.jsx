@@ -8,7 +8,8 @@ import CategoryItem from "../../components/CategoryItem/CategoryItem.jsx";
 import Services from "../../components/Services/Services.jsx";
 import Banner from "../../components/Banner/Banner.jsx";
 import Partners from "../../components/Partners/Partners.jsx";
-import headphone from "../../assets/red-shirt.png";
+// import headphone from "../../assets/red-shirt.png";
+import shoe2 from "/images/shoe2.png"
 import smartwatch2 from "../../assets/show.png";
 import SampleProduct from "../../components/SampleProduct/SampleProduct.jsx";
 // import AppStore from "../../components/AppStore/AppStore.jsx";
@@ -25,12 +26,12 @@ const BannerData = {
   discount: "30% OFF",
   title: "Fine Smile",
   date: "10 Jan to 28 Jan",
-  image: headphone,
+  image: shoe2,
   title2: "Air Solo Bass",
   title3: "Summer Sale",
   title4:
     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque reiciendis",
-  bgColor: "#ff848a",
+  bgColor: "#2953fdb7",
 };
 
 const BannerData2 = {
