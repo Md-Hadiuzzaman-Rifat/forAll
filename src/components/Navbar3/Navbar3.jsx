@@ -177,7 +177,7 @@ export default function Navbar3() {
                     <Link to="/">
                       <span className="sr-only">Your Company</span>
                       <img
-                        className="h-8 md:h-12 w-auto"
+                        className="h-8 w-auto lg:ml-4"
                         src={import.meta.env.VITE_LOGO}
                         alt=""
                       />
