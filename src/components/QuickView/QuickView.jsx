@@ -94,7 +94,7 @@ export default function QuickView() {
                     <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg m-2 bg-gray-100 sm:col-span-4 lg:col-span-5">
                       <img
                         src={`${import.meta.env.VITE_ROOT_API}/Images/${images?.[0].filename}`}
-                        alt="urban region bd"
+                        alt="sato shop"
                         className="object-cover object-center"
                       />
                     </div>

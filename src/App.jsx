@@ -88,8 +88,10 @@ const App = () => {
             <Route path="/adminLogin" element={<AdminLogin />}></Route>
             {/* //  admin and dashboard page start */}
             <Route path="/adminLogin" element={<AdminLogin />}></Route>
-            <Route path="/dashboard" element={<ControllerPrivateRoute></ControllerPrivateRoute>}>
-              
+            <Route
+              path="/dashboard"
+              element={<ControllerPrivateRoute></ControllerPrivateRoute>}
+            >
               <Route path="overview" element={<Overview />}></Route>
               {/* <AdminLayout> */}
               {/* <Route path="users" element={<AllUsers />}></Route> */}
@@ -110,7 +112,6 @@ const App = () => {
             </Route>
 
             {/* //  admin and dashboard page end */}
-          
           </Routes>
         </MainPageLayout>
       </AuthProvider>

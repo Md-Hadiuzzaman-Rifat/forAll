@@ -20,6 +20,7 @@ const CategoryItem = () => {
                 <div className="relative">
                   <Link to={`category/${item?.category}`}>
                   <img
+                    className="object-cover h-36 w-full"
                     src={`${import.meta.env.VITE_ROOT_API}/Images/${
                       item?.image
                     }`}
