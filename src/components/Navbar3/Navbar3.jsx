@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { PiPhoneCallLight } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { useGetCategoryQuery } from "../../features/category/categoryApi";
+import { FaFacebookSquare } from "react-icons/fa";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -53,11 +54,7 @@ export default function Navbar3() {
       <div className="bg-white">
         {/* Mobile menu */}
         <Transition.Root show={open} as={Fragment}>
-          <Dialog
-            as="div"
-            className="relative z-40 "
-            onClose={setOpen}
-          >
+          <Dialog as="div" className="relative z-40 " onClose={setOpen}>
             <Transition.Child
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
@@ -184,7 +181,6 @@ export default function Navbar3() {
                     </Link>
                   </div>
 
-        
                   <div className="ml-auto flex items-center">
                     {/* Contact */}
                     <div className="flex lg:ml-6 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
@@ -200,7 +196,8 @@ export default function Navbar3() {
                     </div>
 
                     {/* Cart */}
-                    <div
+
+                    {/* <div
                       className="ml-4 flow-root lg:ml-6"
                       onClick={() => navigate("/shoppingCart")}
                     >
@@ -211,8 +208,18 @@ export default function Navbar3() {
                         />
                         <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
                           0
-                        </span>
+                        </span> 
                         <span className="sr-only">items in cart, view bag</span>
+                      </a>
+                    </div> */}
+
+                    <div className="ml-2 text-xl text-gray-400 cursor-pointer">
+                      <a
+                        href={`${import.meta.env.VITE_FACEBOOK}`}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        <FaFacebookSquare />
                       </a>
                     </div>
                   </div>

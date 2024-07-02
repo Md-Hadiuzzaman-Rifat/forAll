@@ -3,7 +3,7 @@
 import { Link } from "react-router-dom";
 import { resizeName } from "../../utils/sizes";
 
-export default function SampleProduct({ data }) {
+export default function SampleProduct({ data, sub }) {
 
   return (
     <div className="bg-white">
@@ -12,7 +12,7 @@ export default function SampleProduct({ data }) {
           {data?.length > 0 &&
             data
               ?.filter((item) =>
-                item?.description?.subcategory?.includes("top rated")
+                item?.description?.subcategory?.includes(sub)
               )
               .map((product) => (
                 <Link to={`/productDetails/${product?._id}`} key={product?._id}>

@@ -117,7 +117,7 @@ export default function QuickView() {
                             {description?.price} Taka
                           </p>
                           <p className="text-xl text-gray-900">
-                            {description?.price} Taka
+                            {description?.discount} Taka
                           </p>
                         </div>
 
@@ -153,9 +153,7 @@ export default function QuickView() {
                             ))}
                           </div>
                           {/* // warning  */}
-                          {
-                            console.log(value)
-                          }
+                   
                           <div style={warning ? { display: "block" } : { display: "none" }}>
         <p className="bg-red-200 border font-semibold text-red-700 border-red-700 rounded-sm p-1 text-center mt-2 duration-100 font-abc">
           Please Select Size

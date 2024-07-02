@@ -82,14 +82,20 @@ const Home = () => {
       {/* <NewCategory></NewCategory> */}
       {/* // new ar   */}
       {
-        !isLoading && isSuccess && data && <Products sub="new arrival" data={data}></Products>
+        !isLoading && isSuccess && data && <SampleProduct sub="new arrival" data={data}></SampleProduct>
       }
+      {/* {
+        !isLoading && isSuccess && data && <Products sub="new arrival" data={data}></Products>
+      } */}
       
       <Bars item={bars[1]} id="top rated"></Bars>
        {/* top rated  */}
        {
         isLoading && <ProductListSkeleton/>
        }
+      {
+        !isLoading && isSuccess && data && <SampleProduct data={data} sub="top rated"></SampleProduct>
+      }
       {
         !isLoading && isSuccess && data && <SampleProduct data={data}></SampleProduct>
       }
