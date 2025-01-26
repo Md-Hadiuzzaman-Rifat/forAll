@@ -7,7 +7,7 @@ import CategoryItem from "../../components/CategoryItem/CategoryItem.jsx";
 // import CategoryItem2 from "../../components/CategoryItem/CategoryItem2.jsx";
 import Services from "../../components/Services/Services.jsx";
 import Banner from "../../components/Banner/Banner.jsx";
-import Partners from "../../components/Partners/Partners.jsx";
+// import Partners from "../../components/Partners/Partners.jsx";
 // import headphone from "../../assets/red-shirt.png";
 import shoe2 from "/images/shoe2.png"
 import smartwatch2 from "../../assets/show.png";
@@ -107,7 +107,7 @@ const Home = () => {
       }
       <Banner data={BannerData2} />
       <Blogs />
-      <Partners />
+      {/* <Partners /> */}
       {/* <AppStore></AppStore> */}
       <FooterBanner></FooterBanner>
       <ShoppingCartForm></ShoppingCartForm>

@@ -13,6 +13,8 @@ import { PiPhoneCallLight } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { useGetCategoryQuery } from "../../features/category/categoryApi";
 import { FaFacebookSquare } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { getTotals } from "../../features/cartSlice/cartSlice";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -21,6 +23,13 @@ function classNames(...classes) {
 export default function Navbar3() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const dispatch= useDispatch()
+  const cart = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart, dispatch]);
+
 
   const { data, isLoading } = useGetCategoryQuery();
 
@@ -181,48 +190,55 @@ export default function Navbar3() {
                     </Link>
                   </div>
 
-                  <div className="ml-auto flex items-center">
+                      <div className="ml-auto flex items-center">
                     {/* Contact */}
                     <div className="flex lg:ml-6 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
+
+
+                    {/* <a target="_blank" rel="noreferrer" href="https://www.instagram.com/urbanregionbd/">
+                    <FaInstagramSquare className="text-pink-500 mr-3 text-3xl"></FaInstagramSquare>
+                    </a> */}
+                    
+                    <a target="_blank" rel="noreferrer" href="https://www.facebook.com/flexfitfashion/">
+                    <FaFacebookSquare className="text-blue-500 text-3xl"></FaFacebookSquare>
+                    </a>
                       <a
-                        href={`tel:{+88${import.meta.env.VITE_PHONE}}`}
+                        href="tel:+8801970134360"
                         className="flex items-center gap-2"
                       >
-                        <PiPhoneCallLight className=" mb-1  text-gray-400 " />{" "}
-                        <span className="text-gray-400 font-abc">
-                          +88 {import.meta.env.VITE_PHONE}
+                        <PiPhoneCallLight className=" mb-1  text-gray-400 text-3xl ml-3" />{" "}
+                        <span className="text-gray-400 font-abc hidden md:block">
+                          +88 01970134360
                         </span>
                       </a>
+                      
                     </div>
+                    
 
                     {/* Cart */}
-
-                    {/* <div
+                    <div
                       className="ml-4 flow-root lg:ml-6"
                       onClick={() => navigate("/shoppingCart")}
                     >
                       <a href="#" className="group -m-2 flex items-center p-2">
                         <ShoppingBagIcon
-                          className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                          className="h-8 w-8 text-indigo-500 flex-shrink-0  group-hover:text-red-500"
                           aria-hidden="true"
                         />
-                        <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                          0
-                        </span> 
+                        {
+                          cart?.cartItems?.length > 0 && <span className="relative mt-[-18px] ml-[-10px] flex h-4 w-4">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-4 w-4 bg-red-500"></span>
+                        </span>
+                        }
+                        <span className="text-gray-400 font-semibold">{cart?.cartTotalQuantity}</span>
+                        
                         <span className="sr-only">items in cart, view bag</span>
-                      </a>
-                    </div> */}
-
-                    <div className="ml-2 text-xl text-gray-400 cursor-pointer">
-                      <a
-                        href={`${import.meta.env.VITE_FACEBOOK}`}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        <FaFacebookSquare />
                       </a>
                     </div>
                   </div>
+
+
                 </div>
               </div>
             </nav>
