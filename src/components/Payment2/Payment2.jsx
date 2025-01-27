@@ -1,77 +1,158 @@
-import { useEffect, useState } from "react";
-import {  useLocation, useNavigate } from "react-router-dom";
-const Payment2 = () => {[]
-    const { state } = useLocation() || {};
-    const {division}= state
-    
-    const [phone, setPhone] = useState("");
-    const [transId, setTransId] = useState("");
-    const location = useLocation();
-    const { insertedId }= location?.state?.successData ||{}
-    
-    const [successData, setSuccessData]= useState("")
-    const navigate= useNavigate()
+// import { useLocation } from "react-router-dom";
 
-    const payable=division === "isd" ? "70" :"120"
+// const InvoicePage = () => {
+//   const { state } = useLocation() || {};
+//   console.log(state);
   
-    const handlePayment=async()=>{
+//   return (
+//     <div className="min-h-screen bg-gray-50 p-4">
+//       <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-6">
+//         <header className="border-b pb-4 mb-6">
+//           <h1 className="text-2xl font-bold text-gray-800">Invoice</h1>
+//           <p className="text-sm text-gray-500">Date: January 27, 2025</p>
+//         </header>
 
-      fetch(`${import.meta.env.VITE_ROOT_API}/editPayment`,{
-        method:"PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({id:insertedId ,phone, transId, paid:payable})
-      })
-      .then(res=>res.json())
-      .then(data=>setSuccessData(data))
-      .catch(err=>console.log(err))
-    }
+//         <section className="mb-6">
+//           <h2 className="text-lg font-semibold text-gray-700">Bill To:</h2>
+//           <p className="text-gray-800">John Doe</p>
+//           <p className="text-gray-500">123 Main Street</p>
+//           <p className="text-gray-500">Cityville, ST 12345</p>
+//           <p className="text-gray-500">john.doe@example.com</p>
+//         </section>
+
+//         <table className="w-full text-left border-collapse mb-6">
+//           <thead>
+//             <tr className="bg-gray-100 border-b">
+//               <th className="p-3 text-gray-700">Item</th>
+//               <th className="p-3 text-gray-700">Quantity</th>
+//               <th className="p-3 text-gray-700">Price</th>
+//               <th className="p-3 text-gray-700">Total</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             <tr className="border-b">
+//               <td className="p-3 text-gray-800">Item 1</td>
+//               <td className="p-3 text-gray-800">2</td>
+//               <td className="p-3 text-gray-800">$50.00</td>
+//               <td className="p-3 text-gray-800">$100.00</td>
+//             </tr>
+//             <tr className="border-b">
+//               <td className="p-3 text-gray-800">Item 2</td>
+//               <td className="p-3 text-gray-800">1</td>
+//               <td className="p-3 text-gray-800">$75.00</td>
+//               <td className="p-3 text-gray-800">$75.00</td>
+//             </tr>
+//           </tbody>
+//         </table>
+
+//         <section className="flex justify-end">
+//           <div className="text-right">
+//             <p className="text-gray-700 font-semibold">Subtotal: $175.00</p>
+//             <p className="text-gray-700 font-semibold">Tax (5%): $8.75</p>
+//             <p className="text-gray-700 font-semibold text-lg mt-2">Total: $183.75</p>
+//           </div>
+//         </section>
+
+//         <footer className="mt-8 text-center text-sm text-gray-500">
+//           Thank you for your business! If you have any questions, contact us at <span className="text-blue-500 underline">support@example.com</span>.
+//         </footer>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default InvoicePage;
+
+
+
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
+import { useLocation } from "react-router-dom";
+
+const InvoicePage = () => {
+  const { state } = useLocation() || {};
+
   
-    useEffect(()=>{
-      if(successData){
-        navigate('/orderSuccess')
-      }
-    },[successData, navigate])
-    
-    return (
-        <div className="m-4 mb-16">
-            <div className=" w-full flex flex-wrap flex-col items-center">
-                <div className="flex flex-col  gap-2  items-center">
-                    <img src="/bkash_logo.png" className="w-32 p-2" alt="" />
-                    <div className="flex flex-wrap justify-around w-full">
-                        <div className="flex flex-col justify-center align-center px-4 border  rounded-lg">
-                            <div className="flex w-full gap-1">
-                                <img className="h-12" src={import.meta.env.VITE_LOGO} alt="" />
-                            <p className="font-abc font-semibold text-xl mt-[8px]">{import.meta.env.VITE_WEB_NAME}</p>
-                            </div>
-                        </div>
-                        <div className="p-4 border rounded-lg font-bold font-abc">
-                            {division === "isd" ? 60 :100 } Taka
-                        </div>
-                    </div>
-                    {/* // transaction start  */}
-                    <div className="max-w-[450px] p-4 flex flex-col gap-4 justify-center rounded-md bg-[#d93569c5] divide-y divide-[#c2305e] text-gray-100 text-sm leading-6">
-                    <p>১. <span className="text-yellow-300 font-bold">*247#</span> ডায়েল করে আপনার Bkash মোবাইল মেনু তে যান অথবা BKASH App এ যান। </p>
-                    
-                    <p>২. <span className="text-yellow-300 font-bold">Payment</span> এ ক্লিক করুন। </p>
-                    <p>৩. প্রাপক নম্বর হিসেবে লিখুন <span className="text-yellow-300 font-bold">01970134360</span></p>
-                    <p>৪. ডেলিভারি চার্জ পরিশোধ করে অর্ডার কনফর্ম করুন।</p>
-                    <p>৫. সব কিছু ঠিক থাকলে BKASH থেকে একটি বার্তা পাবেন।</p>
-                    <p>৬। আপনার বিকাশ নম্বর ও <span className="text-yellow-300 font-bold">Transaction ID</span> দিয়ে নিচের ফর্ম পুরন করুন। </p>
-                    <p>
-                        <input type="text" onChange={e=>setPhone(e.target.value)} value={phone} className="w-full text-black text-sm border-0 rounded-md py-[6px] font-bold" placeholder="Bkash নম্বর"/>
-                        
-                        <input type="text" value={transId} onChange={e=>setTransId(e.target.value)} className="w-full text-black text-sm border-0 rounded-md py-[6px] font-bold mt-2" placeholder="Transaction Id"/>
-                        
-                    </p>
-                    </div>
-                    {/* transaction end   */}
-                    <button onClick={handlePayment} className="bg-[#d93569c5] w-full text-white p-2 rounded-md font-semibold">Verify</button>
-                </div>
-            </div>
-        </div>
-    );
+  const downloadPDF = async () => {
+    const content = document.getElementById("invoice");
+    const canvas = await html2canvas(content, { scale: 2 });
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF("p", "mm", "a4");
+    const imgWidth = 210; // A4 width in mm
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+    pdf.save("flexfit27.pdf");
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50 p-4">
+      <div id="invoice" className="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-6">
+        <header className="border-b pb-4 mb-6">
+          <h1 className="text-2xl font-bold text-gray-800">Invoice</h1>
+          <p className="text-sm text-gray-500">Date: January 27, 2025</p>
+        </header>
+
+        <section className="mb-6">
+          <h2 className="text-lg font-semibold text-gray-700">Bill To:</h2>
+          <p className="text-gray-800">John Doe</p>
+          <p className="text-gray-500">123 Main Street</p>
+          <p className="text-gray-500">Cityville, ST 12345</p>
+          <p className="text-gray-500">john.doe@example.com</p>
+        </section>
+        <table className="w-full text-left border-collapse mb-6">
+          <thead>
+            <tr className="bg-gray-100 border-b">
+              <th className="p-3 text-gray-700">Item</th>
+              <th className="p-3 text-gray-700">Quantity</th>
+              <th className="p-3 text-gray-700">Price</th>
+              <th className="p-3 text-gray-700">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+              {/* <tr className="border-b">
+              <td className="p-3 text-gray-800">Item 1</td>
+              <td className="p-3 text-gray-800">2</td>
+              <td className="p-3 text-gray-800">$50.00</td>
+              <td className="p-3 text-gray-800">$100.00</td>
+            </tr> */}
+            {
+              state?.orderStatus?.orderedItem?.map((i)=>(
+                <tr className="border-b" key={i}>
+                  {console.log(i)
+                  }
+              <td className="p-3 text-gray-800">{i+1}</td>
+              <td className="p-3 text-gray-800">2</td>
+              <td className="p-3 text-gray-800">$50.00</td>
+              <td className="p-3 text-gray-800">$100.00</td>
+            </tr>
+              )
+              )
+            }            
+          </tbody>
+        </table>
+
+        <section className="flex justify-end">
+          <div className="text-right">
+            <p className="text-gray-700 font-semibold">Subtotal: $175.00</p>
+            <p className="text-gray-700 font-semibold">Tax (5%): $8.75</p>
+            <p className="text-gray-700 font-semibold text-lg mt-2">Total: $183.75</p>
+          </div>
+        </section>
+
+        <footer className="mt-8 text-center text-sm text-gray-500">
+          Thank you for your business! If you have any questions, contact us at <span className="text-blue-500 underline">support@example.com</span>.
+        </footer>
+      </div>
+      <div className="text-center mt-6">
+        <button
+          onClick={downloadPDF}
+          className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700"
+        >
+          Download as PDF
+        </button>
+      </div>
+    </div>
+  );
 };
 
-export default Payment2;
+export default InvoicePage;

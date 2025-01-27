@@ -13,7 +13,7 @@ const DetailsImage = ({ images }) => {
       <div className=" lg:w-10/12 bg-gray-100 flex justify-center items-center">
          <img
           src={`${import.meta.env.VITE_ROOT_API}/Images/${images[selected]?.filename}`}
-          alt="Wooden Chair Previw"
+          alt="FlexFit27 product image"
         /> 
       </div>
       {/* // optional images  */}
@@ -26,7 +26,7 @@ const DetailsImage = ({ images }) => {
           >
             <img
               src={`${import.meta.env.VITE_ROOT_API}/Images/${images[index].filename}`}
-              alt="Wooden chair- preview 3"
+              alt="FlexFit27 product image"
             />
           </div>
         ))}

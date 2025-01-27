@@ -54,9 +54,9 @@ const orderStatus={name, phone ,email, address, division, orderedItem, date:new 
       setReceivedData(successData)
       dispatch(orderFormClose())
       dispatch(clearCart())
-      navigate('/paymentPage', {state:{successData, division}})
+      navigate('/paymentPage', {state:{successData,orderStatus, division}})
     }
-  },[successPurchase,successData,receivedData, division , dispatch ,navigate])
+  },[successPurchase,successData,receivedData, division , dispatch ,navigate, orderStatus])
 
   return (
     <div className="isolate bg-white px-2 md:px-4 lg:px-8 ">
