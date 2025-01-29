@@ -156,9 +156,9 @@ export default function Navbar3() {
         </Transition.Root>
 
         <header className="relative bg-white">
-          <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
+          {/* <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
             Get free delivery on orders over 5,000 Taka
-          </p>
+          </p> */}
           {/* // static navbar  */}
           <div className={`${stickyClass} w-full`}>
             <nav
@@ -167,7 +167,8 @@ export default function Navbar3() {
             >
               {/* fixed top-10 left-0 right-0 z-50 */}
               <div className="border-b border-gray-200">
-                <div className="flex h-16 items-center">
+                <div className="flex h-20 items-center">
+                  {/* Logo */}
                   <button
                     type="button"
                     className="relative rounded-md bg-white p-2 text-gray-400 "
@@ -177,11 +178,10 @@ export default function Navbar3() {
                     <span className="sr-only">Open menu</span>
                     <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                   </button>
-
-                  {/* Logo */}
+                  
                   <div className="ml-4 flex lg:ml-0">
                     <Link to="/">
-                      <span className="sr-only">Your Company</span>
+                      <span className="sr-only">FlexFit27</span>
                       <img
                         className="h-8 w-auto lg:ml-4"
                         src={import.meta.env.VITE_LOGO}
@@ -190,6 +190,10 @@ export default function Navbar3() {
                     </Link>
                   </div>
 
+
+                  
+
+                  
                       <div className="ml-auto flex items-center">
                     {/* Contact */}
                     <div className="flex lg:ml-6 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">

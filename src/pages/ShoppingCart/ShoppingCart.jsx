@@ -23,10 +23,6 @@ const ShoppingCart = () => {
     window.scrollTo(0, 0);
   }, []);
 
-// {
-//   console.log(cart);
-// }
-
   const [totalPrice, setTotalPrice] = useState(0);
 
   return (
