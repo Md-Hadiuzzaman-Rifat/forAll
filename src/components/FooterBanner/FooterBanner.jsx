@@ -2,7 +2,7 @@
 
 import { FaFacebookSquare } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
-import { FaSquareInstagram } from "react-icons/fa6";
+// import { FaSquareInstagram } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { IoLockClosedSharp } from "react-icons/io5";
 import Partners from "../Partners/Partners"
@@ -141,7 +141,7 @@ const FooterBanner = () => {
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  href="https://www.facebook.com/urbanregionbd/"
+                  href="https://www.facebook.com/flexfitfashion"
                 >
                   <FaFacebookSquare></FaFacebookSquare>
                 </a>
@@ -149,17 +149,17 @@ const FooterBanner = () => {
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  href="https://www.youtube.com/@urbanregionbd"
+                  href="https://www.youtube.com/@Flexfitfashion"
                 >
                   <IoLogoYoutube></IoLogoYoutube>
                 </a>
-                <a
+                {/* <a
                   target="_blank"
                   rel="noreferrer"
-                  href="https://www.instagram.com/urbanregionbd/"
+                  href="https://www.instagram.com/flexfitfashion/"
                 >
                   <FaSquareInstagram></FaSquareInstagram>
-                </a>
+                </a> */}
               </p>
             </div>
           </div>

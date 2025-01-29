@@ -48,13 +48,15 @@ const BannerData2 = {
 
 const bars = [
   {
-    style: "text-[#cc8119] bg-[#fcf4e9]",
+    style: "text-[#009688] bg-[#ccf7f1]",
     heading: "NEW ARRIVAL",
-    text: "",
+    text: "KEEP YOUR SELF TRENDY",
+    textStyle: "mb-[-14px] mt-[4px]",
   },
   {
-    style: "text-[#009688] bg-[#ccf7f1]",
+    
     text: "THE BEST QUALITY OUTFIT",
+    style: "text-[#cc8119] bg-[#fcf4e9]",
     heading: "TOP RATED",
     textStyle: "mb-[-14px] mt-[4px]",
   },
@@ -78,7 +80,7 @@ const Home = () => {
       <Notice></Notice>
       <CategoryItem />
       <Services />
-      <Bars item={bars[0]}></Bars> 
+      <Bars item={bars[0]} id="new arrival"></Bars> 
       {/* <NewCategory></NewCategory> */}
       {/* // new ar   */}
       {

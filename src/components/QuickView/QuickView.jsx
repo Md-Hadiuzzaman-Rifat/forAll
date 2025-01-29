@@ -150,7 +150,7 @@ export default function QuickView() {
                                   className={`${
                                     selectedIndex === index
                                       ? "transition border cursor-pointer hover:shadow-md font-bold bg-gray-800 text-gray-100 px-6 py-1 duration-100"
-                                      : "transition border cursor-pointer hover:shadow-md px-6 py-1 duration-100"
+                                      : "transition border cursor-pointer hover:shadow-md px-6 py-1 duration-100 text-sm"
                                   }`}
                                   onClick={() => handleSize(item, index)}
                                 >

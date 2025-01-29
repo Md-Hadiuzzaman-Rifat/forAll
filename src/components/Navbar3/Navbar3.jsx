@@ -199,7 +199,7 @@ export default function Navbar3() {
                     <div className="flex lg:ml-6 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
 
 
-                    {/* <a target="_blank" rel="noreferrer" href="https://www.instagram.com/urbanregionbd/">
+                    {/* <a target="_blank" rel="noreferrer" href="https://www.instagram.com/">
                     <FaInstagramSquare className="text-pink-500 mr-3 text-3xl"></FaInstagramSquare>
                     </a> */}
                     

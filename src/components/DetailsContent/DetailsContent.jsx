@@ -396,7 +396,7 @@ const DetailsContent = ({ desc, img }) => {
             className={`${
               selectedIndex === index
                 ? "transition border cursor-pointer hover:shadow-md font-bold bg-gray-800 text-gray-100 px-6 py-1 duration-100"
-                : "transition border cursor-pointer hover:shadow-md px-6 py-1 duration-100"
+                : "transition border cursor-pointer text-sm hover:shadow-md px-6 py-1 duration-100"
             }`}
             onClick={() => handleSize(item, index)}
           >

@@ -1,20 +1,27 @@
+
 /* eslint-disable react/prop-types */
 
 import { useState } from "react";
-
+import { SideBySideMagnifier } from "react-image-magnifiers";
+import "./DetailsImage.scss"
 /* eslint-disable no-unused-vars */
 const DetailsImage = ({ images }) => {
   const [selected, setSelected] = useState(0);
-  // console.log(images);
 
   return (
-    <div className=" w-full sm:w-auto md:w-8/12 pt-0 lg:pt-12 lg:w-6/12 flex lg:flex-row-reverse flex-col gap-4">
+    <div className=" w-full sm:w-auto md:w-8/12 pt-0 lg:pt-12 lg:w-6/12 flex flex-col gap-4">
       {/* main images  */}
       <div className=" lg:w-10/12 bg-gray-100 flex justify-center items-center">
-         <img
-          src={`${import.meta.env.VITE_ROOT_API}/Images/${images[selected]?.filename}`}
-          alt="FlexFit27 product image"
-        /> 
+        <div className="main-image">
+          <SideBySideMagnifier
+            alwaysInPlace={true}
+            imageSrc={`${import.meta.env.VITE_ROOT_API}/Images/${
+              images[selected]?.filename
+            }`}
+            imageAlt="Example"
+          />
+        </div>
+
       </div>
       {/* // optional images  */}
       <div className=" w-full lg:w-2/12 grid lg:grid-cols-1 sm:grid-cols-4 grid-cols-2 gap-6">
@@ -25,8 +32,10 @@ const DetailsImage = ({ images }) => {
             onClick={() => setSelected(index)}
           >
             <img
-              src={`${import.meta.env.VITE_ROOT_API}/Images/${images[index].filename}`}
-              alt="FlexFit27 product image"
+              src={`${import.meta.env.VITE_ROOT_API}/Images/${
+                images[index].filename
+              }`}
+              alt="Wooden chair- preview 3"
             />
           </div>
         ))}
