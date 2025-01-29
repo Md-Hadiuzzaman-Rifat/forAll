@@ -48,7 +48,7 @@ const FooterBanner = () => {
         <div className="container py-16 flex justify-between gap-4 flex-wrap text-gray-200">
           <div className="">
             <p className="text-orange-400 text-xl tracking-wider font-bold mb-6">
-              URBAN REGION
+              FlexFit 27
             </p>
             <div className="flex flex-col gap-[6px]">
               <p>ABOUT US</p>
@@ -168,12 +168,12 @@ const FooterBanner = () => {
       <div className="py-8 bg-gray-200">
         <div className="container text-sm  max-w-[85%] text-center">
           <p>
-            URBAN REGION prints a huge variety of custom clothing like T-shirts,
+            FlexFit 27 prints a huge variety of custom clothing like T-shirts,
             hoodies and more. Your order is handled daily with a lot of ❤️️ from
             BANGLADESH and delivered worldwide!
           </p>
           <br />
-          <p>Copyright © 2020 URBAN REGION BD. All Right Reserved</p>
+          <p>Copyright © 2020 FlexFit 27 BD. All Right Reserved</p>
         </div>
       </div>
     </div>

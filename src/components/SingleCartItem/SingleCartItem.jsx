@@ -49,7 +49,7 @@ const SingleCartItem = ({product}) => {
     <div>
       <div className="flex flex-col min-[500px]:flex-row min-[500px]:items-center gap-5 py-6  border-b border-gray-200">
         <div className="w-full md:max-w-[126px]">
-          <img src={image} alt="Urban region product image" className="mx-auto" />
+          <img src={image} alt="FlexFit 27 product image" className="mx-auto" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-5 w-full">
           <div className="md:col-span-2">
