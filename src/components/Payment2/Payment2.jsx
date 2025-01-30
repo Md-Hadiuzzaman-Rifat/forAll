@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 const InvoicePage = () => {
   const { state } = useLocation() || {};
 
+
   const downloadPDF = async () => {
     const content = document.getElementById("invoice");
     const canvas = await html2canvas(content, { scale: 2 });
@@ -16,20 +17,22 @@ const InvoicePage = () => {
     pdf.save("flexfit27.pdf");
   };
 
+  let dc= state?.division === "osd" ? 120 : 60
+  
   return (
     <div className="min-h-screen bg-gray-50 p-4">
       <div id="invoice" className="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-6">
         <header className="border-b pb-4 mb-6">
           <h1 className="text-2xl font-bold text-gray-800">Invoice</h1>
-          <p className="text-sm text-gray-500">Date: January 27, 2025</p>
+          <p className="text-sm text-gray-500">{state?.orderStatus.date}</p>
         </header>
 
         <section className="mb-6">
           <h2 className="text-lg font-semibold text-gray-700">Bill To:</h2>
-          <p className="text-gray-800">John Doe</p>
-          <p className="text-gray-500">123 Main Street</p>
-          <p className="text-gray-500">Cityville, ST 12345</p>
-          <p className="text-gray-500">john.doe@example.com</p>
+          <p className="text-gray-800"><span className="font-bold text-black">Name: </span>{state?.orderStatus?.name}</p>
+          <p className="text-gray-500"> <span className="font-bold text-black">Address: </span> {state?.orderStatus?.address}</p>
+          <p className="text-gray-500"> <span className="font-bold text-black">Email: </span> {state?.orderStatus?.email}</p>
+          <p className="text-gray-500"> <span className="font-bold text-black">Phone: </span> {state?.orderStatus?.phone}</p>
         </section>
         <table className="w-full text-left border-collapse mb-6">
           <thead>
@@ -48,31 +51,30 @@ const InvoicePage = () => {
               <td className="p-3 text-gray-800">$100.00</td>
             </tr> */}
             {
-              state?.orderStatus?.orderedItem?.map((i)=>(
-                <tr className="border-b" key={i}>
-                  {console.log(i)
-                  }
-              <td className="p-3 text-gray-800">{i+1}</td>
-              <td className="p-3 text-gray-800">2</td>
-              <td className="p-3 text-gray-800">$50.00</td>
-              <td className="p-3 text-gray-800">$100.00</td>
+              state?.orderStatus?.orderedItem?.map((i, id)=>(
+                <tr className="border-b" key={id}>
+                
+              <td className="p-3 text-gray-800">{i?.name}</td>
+              <td className="p-3 text-gray-800">{i?.cartQuantity}</td>
+              <td className="p-3 text-gray-800">{i?.price}</td>
+              <td className="p-3 text-gray-800">{i?.price * i?.cartQuantity}</td>
             </tr>
               )
               )
             }            
           </tbody>
         </table>
-
+        
         <section className="flex justify-end">
           <div className="text-right">
-            <p className="text-gray-700 font-semibold">Subtotal: $175.00</p>
-            <p className="text-gray-700 font-semibold">Tax (5%): $8.75</p>
-            <p className="text-gray-700 font-semibold text-lg mt-2">Total: $183.75</p>
+            <p className="text-gray-700 font-semibold">Subtotal: {state?.orderStatus?.total} Tk</p>
+            <p className="text-gray-700 font-semibold">Delivery: {state?.division === "osd" ? 120 : 60} Tk</p> 
+            <p className="text-gray-700 font-semibold text-lg mt-2">Total: {state?.orderStatus?.total + dc} Taka</p>
           </div>
         </section>
-
+       
         <footer className="mt-8 text-center text-sm text-gray-500">
-          Thank you for your business! If you have any questions, contact us at <span className="text-blue-500 underline">support@example.com</span>.
+          Thank you for your purchase❤️️❤️️! If you have any questions, contact us at <span className="text-blue-500 underline">fashionflexfit@gmail.com</span>.
         </footer>
       </div>
       <div className="text-center mt-6">
@@ -82,6 +84,7 @@ const InvoicePage = () => {
         >
           Download as PDF
         </button>
+        <span className="px-6 cursor-pointer py-2 mb-20 text-blue-700 underline ml-4">Back to Home</span>
       </div>
     </div>
   );

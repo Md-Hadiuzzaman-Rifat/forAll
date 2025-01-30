@@ -29,6 +29,7 @@ export default function CustomerAddress({orderedItem}) {
   }, [cart, dispatch]);
 
 const data={name, email, phone, address, division}
+
 const orderStatus={name, phone ,email, address, division, orderedItem, date:new Date().toLocaleString(), total: cart?.cartTotalAmount, status:"pending" }
 
   const handleAddress=(e)=>{
@@ -48,7 +49,6 @@ const orderStatus={name, phone ,email, address, division, orderedItem, date:new 
     purchaseOrder(orderStatus)
   }
   
- 
   useEffect(()=>{
     if(successPurchase && successData){
       setReceivedData(successData)
@@ -56,7 +56,7 @@ const orderStatus={name, phone ,email, address, division, orderedItem, date:new 
       dispatch(clearCart())
       navigate('/paymentPage', {state:{successData,orderStatus, division}})
     }
-  },[successPurchase,successData,receivedData, division , dispatch ,navigate, orderStatus])
+  },[successPurchase,successData,receivedData, division , dispatch ,navigate, orderStatus, data])
 
   return (
     <div className="isolate bg-white px-2 md:px-4 lg:px-8 ">
@@ -160,7 +160,7 @@ const orderStatus={name, phone ,email, address, division, orderedItem, date:new 
                 name="myRadio"
                 value="isd"
               />{" "}
-              Dhaka
+              Inside Dhaka
             </label>
 
             <label>
