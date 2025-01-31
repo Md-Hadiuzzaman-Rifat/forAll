@@ -27,12 +27,17 @@ const InvoicePage = () => {
           <p className="text-sm text-gray-500">{state?.orderStatus.date}</p>
         </header>
 
-        <section className="mb-6">
+        <section className="mb-6 flex justify-between">
+          <div>
           <h2 className="text-lg font-semibold text-gray-700">Bill To:</h2>
           <p className="text-gray-800"><span className="font-bold text-black">Name: </span>{state?.orderStatus?.name}</p>
           <p className="text-gray-500"> <span className="font-bold text-black">Address: </span> {state?.orderStatus?.address}</p>
           <p className="text-gray-500"> <span className="font-bold text-black">Email: </span> {state?.orderStatus?.email}</p>
           <p className="text-gray-500"> <span className="font-bold text-black">Phone: </span> {state?.orderStatus?.phone}</p>
+          </div>
+          <div>
+            <img src="/images/flexfit27.png" className="h-16" alt="" />
+          </div>
         </section>
         <table className="w-full text-left border-collapse mb-6">
           <thead>
@@ -69,7 +74,7 @@ const InvoicePage = () => {
           <div className="text-right">
             <p className="text-gray-700 font-semibold">Subtotal: {state?.orderStatus?.total} Tk</p>
             <p className="text-gray-700 font-semibold">Delivery: {state?.division === "osd" ? 120 : 60} Tk</p> 
-            <p className="text-gray-700 font-semibold text-lg mt-2">Total: {state?.orderStatus?.total + dc} Taka</p>
+            <p className="text-black font-semibold text-lg rounded-sm border-gray-500 border-4 px-4 mt-2">Total: {state?.orderStatus?.total + dc} Taka</p>
           </div>
         </section>
        

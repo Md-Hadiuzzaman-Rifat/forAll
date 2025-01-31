@@ -8,9 +8,8 @@ import CategoryItem from "../../components/CategoryItem/CategoryItem.jsx";
 import Services from "../../components/Services/Services.jsx";
 import Banner from "../../components/Banner/Banner.jsx";
 // import Partners from "../../components/Partners/Partners.jsx";
-// import headphone from "../../assets/red-shirt.png";
-import shoe2 from "/images/shoe2.png"
-import smartwatch2 from "../../assets/show.png";
+import denim from "/public/images/demin/4.png"
+import trouser from "/public/images/demin/5.png";
 import SampleProduct from "../../components/SampleProduct/SampleProduct.jsx";
 // import AppStore from "../../components/AppStore/AppStore.jsx";
 import FooterBanner from "../../components/FooterBanner/FooterBanner.jsx";
@@ -23,27 +22,27 @@ import { useGetProductsQuery } from "../../features/product/productApi.js";
 import ProductListSkeleton from "../../components/ProductListSkeleton/ProductListSkeleton.jsx";
 
 const BannerData = {
-  discount: "30% OFF",
+  discount: "10% OFF",
   title: "Fine Smile",
-  date: "10 Jan to 28 Jan",
-  image: shoe2,
-  title2: "Air Solo Bass",
-  title3: "Summer Sale",
+  date: "Year 2025",
+  image: denim,
+  title2: "Quality Demin",
+  title3: "Biggest Sale",
   title4:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque reiciendis",
+    "Country`s most selling denim brand. Best for budget friendly and the students.",
   bgColor: "#2953fdb7",
 };
 
 const BannerData2 = {
   discount: "30% OFF",
   title: "Happy Hours",
-  date: "14 Jan to 28 Jan",
-  image: smartwatch2,
-  title2: "Smart Solo",
-  title3: "Summer Sale",
+  date: "Year 2025",
+  image: trouser,
+  title2: "Trousers",
+  title3: "Biggest Sale",
   title4:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque reiciendis",
-  bgColor: "#cccccc",
+    "Best for exercise, gym and Prayer. High quality fabric. Unisex and vey much comfortable",
+  bgColor: "#a9bbcc",
 };
 
 const bars = [

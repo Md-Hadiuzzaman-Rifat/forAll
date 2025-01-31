@@ -8,7 +8,7 @@ import "./OrderTableBody.scss"
 import { useEditOrderMutation } from "../../../features/confirmOrder/confirmOrder";
 
 const OrderTableBody = ({item}) => {
-  const {_id,total, payment, date, status }= item || {}
+  const {_id,total, payment, date, status, division }= item || {}
 
 
   const [orderStatus, setOrderStatus]=useState(status)
@@ -25,7 +25,9 @@ const OrderTableBody = ({item}) => {
       <tr className="orderTableBody container">
         <td><Link target="_blank" to={`${_id}`}>{_id}</Link></td>
         <th>{total}</th>
-        <td>Gap</td>
+
+        
+        <td className="uppercase">{division}</td>
         <td><p>{payment?.phone}</p> <p>{payment?.transId}</p> </td>
         <td>{date}</td>
         <td>

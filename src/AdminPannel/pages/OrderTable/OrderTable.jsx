@@ -24,7 +24,7 @@ const OrderTable = () => {
           <tr>
             <th>Order ID</th>
             <th>Total</th>
-            <th>Advanced</th>
+            <th>Division</th>
             <th>Transaction / Bkash</th>
             <th>Order Date</th>
             <th>Status</th>
