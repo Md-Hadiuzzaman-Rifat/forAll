@@ -45,7 +45,7 @@ const ProductLayout2 = ({ data }) => {
           </div>
           <div>
            
-            <p onClick={()=>handlePopUp(data)} className="text-center mt-4 bg-gray-800 text-white p-1 cursor-pointer text-sm">
+            <p onClick={()=>handlePopUp(data)} className="text-center mt-4 bg-gray-800 text-white p-1 cursor-pointer text-xs">
               {" "}
               + Quick View
             </p>

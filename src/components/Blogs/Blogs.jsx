@@ -1,17 +1,17 @@
-import React from "react";
+
 import Heading from "../Shared/Heading";
 
 // import images
-import Img1 from "../../assets/blogs/blog-1.jpg";
-import Img2 from "../../assets/blogs/blog-2.jpg";
-import Img3 from "../../assets/blogs/blog-3.jpg";
+import Img1 from "../../assets/blogs/flexfit27-1.jpg";
+import Img2 from "../../assets/blogs/flexfit27-2.jpg";
+import Img3 from "../../assets/blogs/flexfit27-3.jpg";
 
 const BlogData = [
   {
     title: "How to choose perfect smartwatch",
     subtitle:
       "minima facere deserunt vero illo beatae deleniti eius dolores consequuntur, eligendi corporis maiores molestiae laudantium. Porro?",
-    published: "Jan 20, 2024 by Dilshad",
+    published: "Jan 2020, 2024 by Dilshad",
     image: Img1,
     aosDelay: "0",
   },
@@ -19,7 +19,7 @@ const BlogData = [
     title: "How to choose perfect gadget",
     subtitle:
       "minima facere deserunt vero illo beatae deleniti eius dolores consequuntur, eligendi corporis maiores molestiae laudantium. Porro?",
-    published: "Jan 20, 2024 by Satya",
+    published: "Jan 20, 2023 by Rakib",
     image: Img2,
     aosDelay: "200",
   },
@@ -27,7 +27,7 @@ const BlogData = [
     title: "How to choose perfect VR headset",
     subtitle:
       "minima facere deserunt vero illo beatae deleniti eius dolores consequuntur, eligendi corporis maiores molestiae laudantium. Porro?",
-    published: "Jan 20, 2024 by Sabir",
+    published: "Jan 20, 2024 by Sabbir",
     image: Img3,
     aosDelay: "400",
   },
@@ -37,7 +37,7 @@ const Blogs = () => {
     <div className="my-12">
       <div className="container">
         {/* Header section */}
-        <Heading title="Recent News" subtitle={"Explore Our Blogs"} />
+        <Heading title="Customer Review" subtitle={"Share your opinion on Facebook and Whatsapp"} />
 
         {/* Blog section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 gap-y-8 sm:gap-4 md:gap-7">

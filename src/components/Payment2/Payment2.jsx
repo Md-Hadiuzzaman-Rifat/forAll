@@ -87,7 +87,7 @@ const InvoicePage = () => {
           onClick={downloadPDF}
           className="px-6 py-2 mb-20 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700"
         >
-          Download as PDF
+          Download Invoice
         </button>
         <span className="px-6 cursor-pointer py-2 mb-20 text-blue-700 underline ml-4">Back to Home</span>
       </div>

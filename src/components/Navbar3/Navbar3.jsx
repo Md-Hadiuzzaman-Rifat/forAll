@@ -104,6 +104,19 @@ export default function Navbar3() {
                   <Tab.Group as="div" className="mt-2">
                     <Tab.Panels as={Fragment}>
                       <Tab.Panel className="space-y-10 px-4 pb-8 pt-10">
+                        <p className="font-bold text-2xl bg-gray-100 p-2">MENU</p>
+                        {data?.map((item) => (
+                          <li key={item?._id} className="flow-root">
+                            <span
+                              className=" cursor-pointer text-blue-600 font-abc font-bold"
+                              onClick={() =>
+                                navigateCategory(`category/${item?.category}`)
+                              }
+                            >
+                              {item?.category?.toUpperCase()}
+                            </span>
+                          </li>
+                        ))}
                         {/* // for image start  */}
                         <div className="grid grid-cols-2 gap-x-4">
                           {data?.map((item) => (
@@ -133,18 +146,6 @@ export default function Navbar3() {
                           ))}
                         </div>
 
-                        {data?.map((item) => (
-                          <li key={item?._id} className="flow-root">
-                            <span
-                              className=" cursor-pointer"
-                              onClick={() =>
-                                navigateCategory(`category/${item?.category}`)
-                              }
-                            >
-                              {item?.category?.toUpperCase()}
-                            </span>
-                          </li>
-                        ))}
                       </Tab.Panel>
                     </Tab.Panels>
                   </Tab.Group>
@@ -167,7 +168,7 @@ export default function Navbar3() {
             >
               {/* fixed top-10 left-0 right-0 z-50 */}
               <div className="border-b border-gray-200">
-                <div className="flex h-20 items-center">
+                <div className="flex h-16 items-center">
                   {/* Logo */}
                   <button
                     type="button"

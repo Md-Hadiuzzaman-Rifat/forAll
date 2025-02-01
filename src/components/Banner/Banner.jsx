@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 
+import { Link } from "react-router-dom";
+
 const Banner = ({ data }) => {
   return (
     <div className="min-h-[450px] flex justify-center items-center py-12">
@@ -44,12 +46,13 @@ const Banner = ({ data }) => {
               {data.title4}
             </p>
             <div data-aos="fade-up" data-aos-offset="0">
+              <Link to={data?.url}>
               <button
                 style={{ color: data.bgColor }}
                 className="bg-white py-2 px-4 rounded-full"
               >
                 Shop Now
-              </button>
+              </button></Link>
             </div>
           </div>
         </div>

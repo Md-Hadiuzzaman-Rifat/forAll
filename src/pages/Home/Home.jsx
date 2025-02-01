@@ -8,8 +8,8 @@ import CategoryItem from "../../components/CategoryItem/CategoryItem.jsx";
 import Services from "../../components/Services/Services.jsx";
 import Banner from "../../components/Banner/Banner.jsx";
 // import Partners from "../../components/Partners/Partners.jsx";
-import denim from "/public/images/demin/4.png"
-import trouser from "/public/images/demin/5.png";
+import denim from "/public/images/showcase/flexfit27-denim.png"
+import trouser from "/public/images/showcase/flexfit27-trousers.png";
 import SampleProduct from "../../components/SampleProduct/SampleProduct.jsx";
 // import AppStore from "../../components/AppStore/AppStore.jsx";
 import FooterBanner from "../../components/FooterBanner/FooterBanner.jsx";
@@ -31,6 +31,7 @@ const BannerData = {
   title4:
     "Country`s most selling denim brand. Best for budget friendly and the students.",
   bgColor: "#2953fdb7",
+  url:'/category/denim'
 };
 
 const BannerData2 = {
@@ -43,6 +44,7 @@ const BannerData2 = {
   title4:
     "Best for exercise, gym and Prayer. High quality fabric. Unisex and vey much comfortable",
   bgColor: "#a9bbcc",
+  url:'/category/trouser'
 };
 
 const bars = [
@@ -107,7 +109,7 @@ const Home = () => {
         !isLoading && isSuccess && data && <Products sub="flash deals" data={data}></Products>
       }
       <Banner data={BannerData2} />
-      <Blogs />
+      <Blogs /> 
       {/* <Partners /> */}
       {/* <AppStore></AppStore> */}
       <FooterBanner></FooterBanner>
