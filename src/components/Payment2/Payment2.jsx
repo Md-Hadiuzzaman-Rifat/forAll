@@ -36,7 +36,7 @@ const InvoicePage = () => {
           <p className="text-gray-500"> <span className="font-bold text-black">Phone: </span> {state?.orderStatus?.phone}</p>
           </div>
           <div>
-            <img src="/images/flexfit27.png" className="h-16" alt="" />
+            <img src="../../images/flexfit27.png" className="h-16" alt="" />
           </div>
         </section>
         <table className="w-full text-left border-collapse mb-6">

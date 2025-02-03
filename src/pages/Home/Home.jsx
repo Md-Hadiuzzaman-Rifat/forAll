@@ -8,8 +8,8 @@ import CategoryItem from "../../components/CategoryItem/CategoryItem.jsx";
 import Services from "../../components/Services/Services.jsx";
 import Banner from "../../components/Banner/Banner.jsx";
 // import Partners from "../../components/Partners/Partners.jsx";
-import denim from "/public/images/showcase/flexfit27-denim.png"
-import trouser from "/public/images/showcase/flexfit27-trousers.png";
+import denim from "../../images/showcase/flexfit27-denim.png"
+import trouser from "../../images/showcase/flexfit27-trousers.png";
 import SampleProduct from "../../components/SampleProduct/SampleProduct.jsx";
 // import AppStore from "../../components/AppStore/AppStore.jsx";
 import FooterBanner from "../../components/FooterBanner/FooterBanner.jsx";

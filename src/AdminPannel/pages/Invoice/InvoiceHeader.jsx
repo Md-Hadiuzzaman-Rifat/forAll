@@ -27,7 +27,7 @@ const InvoiceHeader = ({ details }) => {
           </div>
           <img
           className="h-12"
-            src="/images/flexfit27.png"
+            src="../../../images/flexfit27.png"
             alt=""
           />
         </div>
